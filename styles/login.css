@@ -30,7 +30,7 @@ body {
 .input {
 	width: 100%;
 	padding: 10px 0;
-	margin: 5px auto;
+	margin: 5px auto 25px;
 	border-radius: 10px;
 	border: none;
 	box-shadow: 2px 2px 2px grey;
@@ -41,7 +41,7 @@ body {
 }
 
 input:focus {
-	border: 2px groove #2ec4b6;
+	/* border: 2px groove #2ec4b6; */
 	outline: none;
 }
 
@@ -56,4 +56,12 @@ input:focus {
 .btn-login:hover {
 	background-color: #43aa8b;
 	color: #ffffff;
+}
+
+.error {
+	border: 3px solid red;
+}
+
+.success {
+	border: 3px solid green;
 }
