@@ -12,7 +12,7 @@
   $target_path = $target_dir . basename($_FILES["pic"]["name"]);
 
   if ($_FILES["pic"]["size"] > 2000000) {
-    echo "File is too large";
+    //echo "File is too large";
     $ok = 0;
   }
 
@@ -24,14 +24,13 @@
 
   if ($ok == 1) {
     if(move_uploaded_file($_FILES["pic"]["tmp_name"], $target_path) == 1) {
-      echo "upload gambar berhasil";
+      //echo "upload gambar berhasil";
     } else {
-      echo "gagal";
+      //echo "gagal";
     }
   }
 
   //insert to database
-
   $conn = mysqli_connect("localhost", "root", "aaaaaaab", "willy_wangky");
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -43,9 +42,12 @@
     $conn->query($sql);
     echo "Coklat berhasil ditambahkan.";
   } catch (Exception $e) {
-    echo 'Caught exception: ',  $e->getMessage(), '\n';
-    echo "Coklat gagal ditambahkan.";
+    //echo 'Caught exception: ',  $e->getMessage(), '\n';
+    //echo "Coklat gagal ditambahkan.";
   }
 
   $conn->close();
+
+  header("Location: {$_SERVER['HTTP_REFERER']}");
+  exit;
 ?>
