@@ -24,16 +24,20 @@ body {
 	margin: 70px auto;
 	border-radius: 30px;
 	width: 300px;
-	padding: 3em 3em;
+	padding: 4em 3em;
 }
 
 .input {
 	width: 100%;
-	padding: 10px 0;
-	margin: 5px auto 25px;
+	padding: 10px 5px;
+	margin: 5px auto;
 	border-radius: 10px;
 	border: none;
 	box-shadow: 2px 2px 2px grey;
+}
+
+.form-control {
+	margin-bottom: 25px;
 }
 
 .input-password {
@@ -48,7 +52,8 @@ input:focus {
 .btn-login {
 	cursor: pointer;
 	width: 100%;
-	padding: 10px;
+	padding: 8px;
+	margin-top: 20px;
 	background-color: #c38e70;
 	border: none;
 }
@@ -64,4 +69,21 @@ input:focus {
 
 .success {
 	border: 3px solid green;
+}
+
+.validation {
+	margin: 0;
+	font-style: italic;
+	font-size: 12px;
+	color: red;
+}
+
+::placeholder {
+	text-align: left;
+	color: #d4d4d4;
+}
+
+:-ms-input-placeholder {
+	text-align: left;
+	color: #d4d4d4;
 }
