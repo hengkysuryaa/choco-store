@@ -2,11 +2,11 @@
 <html>
   <head>
     <title> Tambah Coklat </title>
-    <link rel="stylesheet" href="tambah_coklat.css">
+    <!-- link rel="stylesheet" href="tambah_coklat.css" -->
   </head>
 
   <body>
-    <div class="tes-1">
+    <div>
       <form enctype="multipart/form-data" action="tambah_coklat.php" method="POST">
         Nama Coklat: <input type="text" name="name"><br>
         Harga per Satuan: <input type="text" name="price"><br>
@@ -16,6 +16,10 @@
         <input type="submit" value="Tambah">
       </form>
     </div>
+    <form action="index.php" method="get">
+       <button type="submit">Back</button>
+    </form>
+    
   </body>
 
 </html>
