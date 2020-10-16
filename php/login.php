@@ -1,6 +1,7 @@
 <?php
 require_once 'connectDB.php';
 
+$checkRole = include 'checkRole.php';
 $username = $_POST['username'];
 
 $getPassword = $conn->prepare("SELECT `password` FROM `users` WHERE `username`=?");

@@ -4,9 +4,10 @@ require_once 'connectDB.php';
 $username = $_POST['username'];
 $email = trim($_POST['email']);
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$role = 'user';
 
-$registerUser = $conn->prepare("INSERT INTO `users` VALUES (?, ?, ?)");
-$registerUser->bind_param("sss", $username, $email, $password);
+$registerUser = $conn->prepare("INSERT INTO `users` VALUES (?, ?, ?, ?)");
+$registerUser->bind_param("ssss", $username, $email, $password, $role);
 $registerUser->execute();
 
 $registerUser->close();
