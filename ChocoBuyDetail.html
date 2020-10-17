@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Detail page </title>
+        <link rel="stylesheet" href="choco-detail.css">
+        <script src="choco-detail.js"> </script>
+    </head>
+    <body>
+        <div class="flex-container">
+            <h3> Ferrero </h3>
+        </div>
+        
+        <div class="flex-container">
+            <table border="1" style="height:650px; width:100%;">
+                <tr>
+                    <td rowspan="6" style="background-position: center; background-size: contain; background-repeat:no-repeat ;background-image: url(ferrero.jpg); width: 10cm; height: 10cm;"> </td>
+                    <td> Amount sold: </td>
+                </tr>
+                <tr>
+                    <td> Price: </td>
+                </tr>
+                <tr>
+                    <td> Amount: </td>
+                </tr>
+                <tr>
+                    <td> Description </td>
+                </tr>
+                <tr>
+                    <td> Coklat ini rasa coklat aaaaaaa</td>
+                </tr>
+                <tr>
+                    <td style="height: 150px;"> 
+                        <p> Amount to Buy: </p>
+                        <form> 
+                            <input type="button" onclick="minusButtonBuy()" value="-" style="height: 0.7cm; width: 0.7cm; border-radius: 30%; background-color: brown; color: antiquewhite;" >
+                            <input type="number" id="quantity" name="quantity" value="1" style="text-align: center;" readonly required>
+                            <input type="button" onclick="plusButtonBuy()" value="+" style="height: 0.7cm; width: 0.7cm; border-radius: 30%; background-color: brown; color: antiquewhite;" > <br>
+                            <p> Total price: </p>
+                            <p id="totalprice" style="font-weight: bold;"> Rp 10000 </p>
+                            <p> Address: </p>
+                            <textarea style="resize:none;" rows="5" cols="100" name="alamat" placeholder="Insert your address" required></textarea> <br>
+                            <button class="btn-add" type="submit"> <b> Buy </b> </button>
+                            <button class="btn-cancel" type="submit"> <b> Cancel </b> </button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
