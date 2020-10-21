@@ -53,3 +53,19 @@ td {
 	color: #ffffff;
 }
 
+.picture-container {
+    background-position: top; 
+    background-size: contain; 
+    background-repeat:no-repeat;
+    width: 10cm; 
+    height: 10cm;
+}
+
+.plus-minus-button {
+    height: 0.7cm; 
+    width: 0.7cm; 
+    border-radius: 30%; 
+    background-color: brown; 
+    color: antiquewhite;
+}
+
