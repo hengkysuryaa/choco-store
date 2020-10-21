@@ -1,0 +1,14 @@
+body {
+	text-align: center;
+	background-color: #6d6875;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #f9dcc4;
+	width: 80%;
+	margin: 30px auto;
+}
