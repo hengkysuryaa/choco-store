@@ -49,6 +49,12 @@ body {
   margin: 10px 20em;
 }
 
+#search {
+  padding: 6px 15em 6px 5px;
+  border: none;
+  font-size: 12px;
+}
+
 .choco-card-container {
   display: flex;
   flex-flow: row wrap;
@@ -111,11 +117,6 @@ body {
   border-radius: 5px;
 }
 
-#search {
-  padding: 6px 15em 6px 5px;
-  border: none;
-  font-size: 12px;
-}
 
 ::placeholder {
   text-align: left !important;
@@ -123,18 +124,13 @@ body {
 }
 
 :-ms-input-placeholder {
-<<<<<<< HEAD
   text-align: left !important;
   color: #d4d4d4 !important;
 }
-=======
-<<<<<<< HEAD
+
+:-ms-input-placeholder {
   text-align: left;
   color: #d4d4d4;
 }
-=======
-  text-align: left !important;
-  color: #d4d4d4 !important;
-}
->>>>>>> 85f133b (Styling dashboard)
->>>>>>> 7d3751e (Styling dashboard)
+>>>>>>> acbb734 (Add navbar to dashboard)
+>>>>>>> 7f657e7 (Add navbar to dashboard)
