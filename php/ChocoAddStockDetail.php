@@ -2,8 +2,8 @@
 <html>
     <head>
         <title> Detail page </title>
-        <link rel="stylesheet" href="choco-detail.css">
-        <script src="choco-detail.js"> </script>
+        <link rel="stylesheet" href="../styles/choco-detail.css">
+        <script src="../scripts/choco-detail.js"> </script>
     </head>
     <body>
         <div class="flex-container">

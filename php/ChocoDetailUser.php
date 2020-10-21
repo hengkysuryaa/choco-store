@@ -2,7 +2,7 @@
 <html>
     <head>
         <title> Detail page </title>
-        <link rel="stylesheet" href="choco-detail.css">
+        <link rel="stylesheet" href="../styles/choco-detail.css">
     </head>
     <body>
         <?php 
