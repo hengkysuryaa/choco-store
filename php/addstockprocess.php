@@ -1,15 +1,6 @@
 <?php 
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "praktikum";
-  $dbname = "willywangky";
-
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
+  include 'configDB.php';
 
   // data from post
   $amount_add = $_POST["quantity"];
