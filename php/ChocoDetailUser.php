@@ -6,41 +6,49 @@
     </head>
     <body>
         <?php 
-            include 'configDB.php';
+            include 'connectDB.php';
 
-            $sql = "SELECT * FROM coklat WHERE id=1;";
+            $id = $_GET["id"];
+
+            $sql = "SELECT * FROM coklat WHERE idcoklat=$id;";
             $result = mysqli_query($conn, $sql);
 
             $row = mysqli_fetch_assoc($result);
 
             echo "<div class='flex-container'>";
-            echo "<h3> Ferrero </h3>";
+            echo "<h3>" . $row["choco_name"] . "</h3>";
             echo "</div>";
                 
             echo "<div class='flex-container'>";
             echo "<table border='0' style='height:400px; width:100%;'>";
 
-            $url = urlencode("ferrero.jpg"); //TODO: assign dg hasil query row["urlpath"]
+            $fullpath = "../" . $row["imgpath"];
+
+            $url = urlencode($fullpath); //TODO: assign dg hasil query row["urlpath"]
 
             echo "<tr>";
-            echo "<td rowspan='5' class='picture-container' style='background-image: url($url);'> </td>";
-            echo "<td> Amount sold: ".$row["amount_sold"]."</td>";
+            echo "<td rowspan='5' class='picture-container'> <img src='". $fullpath ."' style='height:10cm; width:10cm'> </td>";
+            echo "<td> Amount sold: ".$row["amountsold"]."</td>";
             echo "</tr>";
             echo "<tr>";
             echo "<td> Price: ".$row["price"]."</td>";
             echo "</tr>";
             echo "<tr>";
-            echo "<td> Amount: ".$row["stock"]."</td>";
+            echo "<td> Amount: ".$row["amount"]."</td>";
             echo "</tr>";
             echo "<tr>";
             echo "<td> Description </td>";
             echo "</tr>";
             echo "<tr>";
-            echo "<td>".$row["deskripsi"]."</td>";
+            echo "<td>".$row["description"]."</td>";
             echo "</tr>";
             echo "</table>";
             echo "</div> <br>";
+
+            // $dest = 'chocobuydetail.php?id='.$id;
+
+            // echo "<button class='btn-add' onclick='location.href = " .$dest. "'> <b> Buy Now </b> </button>";
         ?>
-        <button class="btn-add" onclick="location.href = 'ChocoBuyDetail.php'"> <b> Buy Now </b> </button>
+        <button class="btn-add" onclick="location.href = 'ChocoBuyDetail.php?id=<?php echo $id; ?>'"> <b> Buy Now </b> </button>
     </body>
 </html>

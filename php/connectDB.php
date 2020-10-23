@@ -1,5 +1,5 @@
 <?php
-$config = include('config.php');
+$config = include('configDB.php');
 $db_hostname = $config['DB_HOSTNAME'];
 $db_username = $config['DB_USERNAME'];
 $db_password = $config['DB_PASSWORD'];

@@ -1,5 +1,4 @@
 <?php
-
   $nama_coklat = $_POST["name"];
   $jumlah_coklat = $_POST["count"];
   $deskripsi_coklat = $_POST["desc"];
@@ -11,7 +10,6 @@
   $target_path = $target_dir . basename($_FILES["pic"]["name"]);
 
   if ($_FILES["pic"]["size"] > 2000000) {
-    //echo "File is too large";
     $ok = 0;
   }
 
@@ -22,7 +20,8 @@
   }
 
   if ($ok == 1) {
-    if(move_uploaded_file($_FILES["pic"]["tmp_name"], $target_path) == 1) {
+    $target_path_to = '../' . $target_path;
+    if(move_uploaded_file($_FILES["pic"]["tmp_name"], $target_path_to) == 1) {
       //echo "upload gambar berhasil";
     } else {
       //echo "gagal";
@@ -30,10 +29,13 @@
   }
 
   //insert to database
-  $conn = mysqli_connect("localhost", "root", "aaaaaaab", "willy_wangky");
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
+
+  require_once ("connectDB.php");
+
+  // $conn = mysqli_connect("localhost", "root", "aaaaaaab", "willy_wangky");
+  // if ($conn->connect_error) {
+  //   die("Connection failed: " . $conn->connect_error);
+  // }
 
   $sql = "INSERT INTO coklat(choco_name, price, imgpath, amount, amountsold, description) VALUES ('" . $nama_coklat . "', " . $harga_coklat . ", '" . $target_path . "', " . $jumlah_coklat . ", 0, '" . $deskripsi_coklat . "')";
 

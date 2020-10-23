@@ -1,22 +1,27 @@
 <?php 
 
-  include 'configDB.php';
+  include 'connectDB.php';
 
   // data from post
   $quantity = $_POST["quantity"];
   $address = $_POST["alamat"];
+  $id = $_GET["id"];
+
+  $getusername = include('getusername.php');
+  $username = $getusername($_COOKIE["currentUsername"]);
 
   // query mendapat harga coklat dan stok
-  $sql1 = "SELECT price,stock,amount_sold FROM coklat WHERE id=1;"; //TODO: sesuaiin id
+  $sql1 = "SELECT * FROM coklat WHERE idcoklat=$id;"; //TODO: sesuaiin id
   $result1 = mysqli_query($conn, $sql1);
   $row = mysqli_fetch_assoc($result1);
   $price = $row["price"];
-  $stock =$row["stock"];
+  $stock = $row["amount"];
+  $choconame = $row["choco_name"];
   //TODO: $username (buyer)
 
   // check $quantity <= $stock
   if ($stock == 0) {
-    echo "<script>window.location='ChocoBuyDetail.php';alert('Stok kosong. Anda tidak dapat membeli coklat ini.');</script>";
+    echo "<script>window.location='ChocoBuyDetail.php?id=" . $id . "';alert('Stok kosong. Anda tidak dapat membeli coklat ini.');</script>";
   }
   else {
 
@@ -24,16 +29,16 @@
 
       $totalprice = $quantity * $price;
       // query insert data ke tabel transaksi TODO: sesuaiin dengan nama atribut tabel
-      $sql2 = "INSERT INTO transaksi(totalharga,quantity,alamat) VALUES ($totalprice, $quantity, '$address');";
+      $sql2 = "INSERT INTO transaksi(username,choco_name,amount,totalprice,`date`,`time`,address) VALUES ('$username','$choconame', $quantity, $totalprice, CURDATE() , CURTIME(), '$address');";
   
       if (mysqli_query($conn, $sql2)) {
           
           // query update stock & update amount sold
           $update_stock = $stock - $quantity;
-          $update_amount_sold = $row["amount_sold"] + $quantity;
-          $sql3 = "UPDATE coklat SET stock=$update_stock, amount_sold=$update_amount_sold WHERE id=1;";
+          $update_amount_sold = $row["amountsold"] + $quantity;
+          $sql3 = "UPDATE coklat SET amount=$update_stock, amountsold=$update_amount_sold WHERE idcoklat=$id;";
           if (mysqli_query($conn, $sql3)) {
-              header('Location: ChocoDetailUser.php');
+              header('Location: ChocoDetailUser.php?id='.$id);
             } else {
               echo "Error" . mysqli_error($conn);
           }
@@ -42,7 +47,7 @@
       }
   
     } else {
-        echo "<script>window.location='ChocoBuyDetail.php';alert('Anda tidak dapat membeli coklat dengan jumlah melebihi stok.');</script>"; 
+        echo "<script>window.location='ChocoBuyDetail.php?id=" . $id . "';alert('Anda tidak dapat membeli coklat dengan jumlah melebihi stok.');</script>"; 
     }
   }
 

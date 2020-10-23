@@ -23,4 +23,5 @@ $registerCookie->close();
 
 $_POST = array();
 $conn->close();
-header("Location: ../pages/success.html");
+header('Location: ../php/dashboard-user.php');
+// header("Location: ../pages/success.html");

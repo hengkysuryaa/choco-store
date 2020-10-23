@@ -14,27 +14,31 @@
             <table border="0" style="height:500px; width:100%;">
                 <?php 
 
-                    include 'configDB.php';
+                    include 'connectDB.php';
 
-                    $sql = "SELECT * FROM coklat WHERE id=1;";
+                    $id = $_GET["id"];
+
+                    $sql = "SELECT * FROM coklat WHERE idcoklat=$id;";
                     $result = mysqli_query($conn, $sql);
 
                     $row = mysqli_fetch_assoc($result);
 
+                    $fullpath = "../" . $row["imgpath"];
+
                     $url = urlencode("ferrero.jpg"); //TODO: assign dg hasil query row["urlpath"]
 
                     echo "<tr>";
-                    echo "<td rowspan='7' class='picture-container' style='background-image: url($url);'> </td>";
-                    echo "<td>".$row["nama"]."</td>";
+                    echo "<td rowspan='7' class='picture-container'> <img src='". $fullpath ."' style='height:10cm; width:10cm'> </td>";
+                    echo "<td>".$row["choco_name"]."</td>";
                     echo "</tr>";
                     echo "<tr>";
-                    echo "<td> Amount sold: ".$row["amount_sold"]."</td>";
+                    echo "<td> Amount sold: ".$row["amountsold"]."</td>";
                     echo "</tr>";
                     echo "<tr>";
                     echo "<td> Price: ".$row["price"]."</td>";
                     echo "</tr>";
                     echo "<tr>";
-                    echo "<td> Amount remaining: ".$row["stock"]."</td>";
+                    echo "<td> Amount remaining: ".$row["amount"]."</td>";
                     echo "</tr>";
                     echo "<tr>";
                     echo "<td> Description </td>";
@@ -46,13 +50,13 @@
                 <tr>
                     <td style="height: 150px;"> 
                         <p> Amount to add: </p>
-                        <form action="addstockprocess.php" method="POST"> 
+                        <form action="addstockprocess.php?id=<?php echo $id ?>" method="POST"> 
                             <input class="plus-minus-button" type="button" onclick="minusButton()" value="-">
                             <input type="number" id="quantity" name="quantity" value="1" style="text-align: center;" readonly required>
                             <input class="plus-minus-button" type="button" onclick="plusButton()" value="+">  <br> <br>             
                             <button class="btn-add" type="submit"> <b> Add </b> </button>
                         </form>
-                        <button class="btn-cancel" type="submit" onclick="location.href='ChocoDetailSuperuser.php'"> <b> Cancel </b> </button>
+                        <button class="btn-cancel" type="submit" onclick="location.href = 'ChocoDetailSuperuser.php?id=<?php echo $id; ?>'"> <b> Cancel </b> </button>
                     </td>
                 </tr>
             </table>

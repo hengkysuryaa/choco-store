@@ -30,7 +30,7 @@ if (isset($result)) {
         }
         $getCookie->close();
 
-        header('Location: ../pages/success.html');
+        header('Location: ../php/dashboard-user.php');
     } else {
         header('Location: ../pages/login.html');
     }

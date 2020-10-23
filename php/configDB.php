@@ -1,13 +1,8 @@
-<?php 
-    $servername = "localhost";
-    $username = "root";
-    $password = "praktikum";
-    $dbname = "willywangky";
-
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
+<?php
+return array(
+    'DB_HOSTNAME' => 'localhost',
+    'DB_USERNAME' => 'root',
+    'DB_PASSWORD' => 'aaaaaaab',
+    'DB_DATABASE_NAME' => 'chocofactory',
+);
 ?>
