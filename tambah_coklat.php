@@ -7,7 +7,6 @@
   $ok = 1;
 
   //handle image for the added chocolate
-
   $target_dir = "assets/uploads/";
   $target_path = $target_dir . basename($_FILES["pic"]["name"]);
 
@@ -42,8 +41,8 @@
     $conn->query($sql);
     echo "Coklat berhasil ditambahkan.";
   } catch (Exception $e) {
-    //echo 'Caught exception: ',  $e->getMessage(), '\n';
-    //echo "Coklat gagal ditambahkan.";
+    echo 'Caught exception: ',  $e->getMessage(), '\n';
+    echo "Coklat gagal ditambahkan.";
   }
 
   $conn->close();
