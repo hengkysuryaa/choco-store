@@ -1,0 +1,8 @@
+<?php
+return array(
+    'DB_HOSTNAME' => 'localhost',
+    'DB_USERNAME' => 'lalala',
+    'DB_PASSWORD' => '123123',
+    'DB_DATABASE_NAME' => 'chocofactory',
+);
+?>
