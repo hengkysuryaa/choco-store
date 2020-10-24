@@ -33,13 +33,13 @@
     <div class="choco-card-container">
       <?php
 
-        // require_once("connectDB.php");
+        require_once("connectDB.php");
 
         //ambil semua database coklat yang ada
-        $conn = mysqli_connect("localhost", "root", "aaaaaaab", "chocofactory");
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        } 
+        // $conn = mysqli_connect("localhost", "root", "aaaaaaab", "chocofactory");
+        // if ($conn->connect_error) {
+        //   die("Connection failed: " . $conn->connect_error);
+        // } 
 
         $sql = "SELECT * FROM coklat";
         try {

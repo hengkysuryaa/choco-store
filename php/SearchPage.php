@@ -26,21 +26,21 @@
 
         include 'connectDB.php';
 
-        $content_per_page = 4;
+        $content_per_page = 3;
         $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
         $start = ($page>1) ? ($page * $content_per_page) - $content_per_page : 0;
 
-        $search_query = $_GET["search"];
+        $search = $_GET["search"];
 
-        echo "TESUTO" . $search_query;
+        echo "TESUTO" . $search;
 
-        $sql = "SELECT * FROM coklat WHERE choco_name LIKE '%$search_query%'";
+        $sql = "SELECT * FROM coklat WHERE choco_name LIKE '%$search%'";
         $result = mysqli_query($conn, $sql);
         $total_row = mysqli_num_rows($result);
 
         $total_page = ceil($total_row / $content_per_page);
 
-        $sql2 = "SELECT * FROM coklat WHERE choco_name LIKE '%$search_query%' LIMIT $start, $content_per_page";
+        $sql2 = "SELECT * FROM coklat WHERE choco_name LIKE '%$search%' LIMIT $start, $content_per_page";
         $result2 = mysqli_query($conn, $sql2);
 
         while ($row = mysqli_fetch_assoc($result2)) {
@@ -60,9 +60,8 @@
 <br>
 <center> <div>
     <?php 
-    
         for($i=1; $i<=$total_page; $i++) {
-            echo "<a href='?page=$i'>    ".$i."   </a>";
+            echo "<a href='?search=$search&page=$i'>".$i."</a>";
         }
     ?>
 </div> </center>
