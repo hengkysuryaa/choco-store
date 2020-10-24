@@ -11,6 +11,7 @@
     <a href="./php/lihattransaksi.php"> Lihat Transaksi </a><br>
     <a href="./pages/register.html"> Daftar </a><br>
     <a href="./pages/login.html"> Login </a><br>
+    <a href="./php/SearchPage.php"> Search Coklat </a>
 
             <div class="choco-card-container">
           <?php

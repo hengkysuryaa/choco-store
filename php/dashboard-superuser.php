@@ -19,7 +19,11 @@
         <li><a class="active" href="#">Home</a></li>
         <li><a href="../pages/tambah-coklat.html">Add Coklat</a></li>
         <li class="logout-link"><a href="logout.php">Logout</a></li>
-        <li class="search-bar"><input type="text" name="search" id="search" placeholder="Search"></li>
+        <li class="search-bar">
+          <form method="get" action="SearchPage.php">
+              <input type="text" name="search" id="search" autocomplete="off" placeholder="Search">
+          </form>
+        </li>
     </ul>
 
     <br>
