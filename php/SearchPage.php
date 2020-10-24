@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../styles/dashboard.css">
+    <!-- <link rel="alternate stylesheet" href="../styles/searchpage.css"> -->
 </head>
 <body>
     <ul>
@@ -60,9 +61,13 @@
 <br>
 <center> <div>
     <?php 
+        echo "<div class='pagination'>";
+        // echo "<ul>";
         for($i=1; $i<=$total_page; $i++) {
             echo "<a href='?search=$search&page=$i'>".$i."</a>";
         }
+        // echo "</ul>";
+        echo "</div>";
     ?>
 </div> </center>
 
