@@ -33,8 +33,6 @@
 
         $search = $_GET["search"];
 
-        echo "TESUTO" . $search;
-
         $sql = "SELECT * FROM coklat WHERE choco_name LIKE '%$search%'";
         $result = mysqli_query($conn, $sql);
         $total_row = mysqli_num_rows($result);
