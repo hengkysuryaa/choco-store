@@ -35,7 +35,9 @@
                     echo "<td> Amount sold: ".$row["amountsold"]."</td>";
                     echo "</tr>";
                     echo "<tr>";
-                    echo "<td> Price: ".$row["price"]."</td>";
+                    echo "<td> Price: ";
+                    echo "<p id='price' style='display:inline;'>".$row["price"]."</p>";
+                    echo "</td>";
                     echo "</tr>";
                     echo "<tr>";
                     echo "<td> Amount remaining: ".$row["amount"]."</td>";
@@ -44,7 +46,7 @@
                     echo "<td> Description </td>";
                     echo "</tr>";
                     echo "<tr>";
-                    echo "<td>".$row["deskripsi"]."</td>";
+                    echo "<td>".$row["description"]."</td>";
                     echo "</tr>";
                 ?>  
                 <tr>
@@ -55,7 +57,7 @@
                             <input type="number" id="quantity" name="quantity" value="1" style="text-align: center;" readonly required>
                             <input class="plus-minus-button" type="button" onclick="plusButtonBuy()" value="+"> <br>
                             <p> Total price: </p>
-                            <p id="totalprice" style="font-weight: bold;"> Rp 10000 </p>
+                            <p id="totalprice" style="font-weight: bold;"> Rp <?php echo $row["price"] ?> </p>
                             <p> Address: </p>
                             <textarea style="resize:none;" rows="5" cols="100" name="alamat" placeholder="Insert your address" required></textarea> <br>
                             <button class="btn-add" type="submit"> <b> Buy </b> </button>
