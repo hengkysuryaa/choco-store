@@ -44,7 +44,7 @@
                     echo "<td> Description </td>";
                     echo "</tr>";
                     echo "<tr>";
-                    echo "<td>".$row["deskripsi"]."</td>";
+                    echo "<td>".$row["description"]."</td>";
                     echo "</tr>";
                 ?>  
                 <tr>
