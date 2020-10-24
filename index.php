@@ -13,11 +13,10 @@
     <a href="./pages/login.html"> Login </a><br>
     <a href="./php/SearchPage.php"> Search Coklat </a>
 
-            <div class="choco-card-container">
+          <div class="choco-card-container">
           <?php
 
             // require_once()
-
             //ambil semua database coklat yang ada
             $conn = mysqli_connect("localhost", "root", "aaaaaaab", "chocofactory");
             if ($conn->connect_error) {
