@@ -1,24 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Tambah Coklat </title>
+    <title> Add Choco </title>
+    <link rel="stylesheet" href="../styles/tambah-coklat.css">
   </head>
 
   <body>
-    <div>
-      <form enctype="multipart/form-data" action="../php/TambahCoklat.php" method="POST">
-        Nama Coklat: <input type="text" name="name"><br>
-        Harga per Satuan: <input type="text" name="price"><br>
-        Jumlah: <input type="text" name="count"><br>
-        Masukkan Gambar Coklat: <input type="file" name="pic" id="pic"><br>
-        Deskripsi: <input type="text" name="desc"></br>
-        <input type="submit" value="Tambah">
-      </form>
+    <div class="flex-container">
+      <h3> Add New Chocolate </h3>
     </div>
 
+    <div class="flex-container">
+      <table border="0" style="width: 100%;">
+            <form enctype="multipart/form-data" action="../php/TambahCoklat.php" method="POST">
+              <tr>
+                <td> Name: </td>
+                <td> <input type="text" name="name" size="50"> </td>
+              </tr>
+              <tr> 
+                <td> Price: </td>
+                <td> <input type="text" name="price" size="50"> </td>
+              </tr>
+              <tr>
+                <td> Description:  </td>
+                <td> <textarea style="resize:none;" rows="5" cols="52" name="desc" required></textarea> </td>
+              </tr>
+              <tr>
+                <td> Image: </td>
+                <td> <input type="file" name="pic" id="pic"> </td>
+              </tr>
+              <tr>
+                <td> Amount: </td>
+                <td> <input type="text" name="count" size="50"> </td>
+              </tr>
+              <tr> 
+                <td colspan="2"> <button class="btn-add" type="submit"> <b> Add Chocolate </b> </button> 
+                  <button class="btn-cancel" onclick="location.href = '../php/dashboard-superuser.php'"> <b> Cancel </b> </button>
+                </td>
+              </tr>
+            </form>
+            
+      </table>
+    </div>
+<!--
     <form action="../index.php" method="get">
        <button type="submit">Back</button>
-    </form>
+    </form> -->
+
   </body>
 
 </html>

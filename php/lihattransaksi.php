@@ -2,16 +2,25 @@
 <html>
   <head>
     <title> Transaksi </title>
-    <link rel="stylesheet" href="tambah_coklat.css">
+    <link rel="stylesheet" href="../styles/lihat-transaksi.css">
   </head>
 
   <body>
-    <div class="tes-1">
-      <table>
-        <tr>
-          <th>Content</th>
-        </tr>
+    <div class="flex-container">
+      <h3> Transaction History </h3>
+    </div>
 
+    <div class="flex-container">
+      <table border="1" style="width:100%; text-align:left"> 
+        <tr>
+          
+          <td> <b> Chocolate Name </b> </td>
+          <td> <b> Amount </b> </td>
+          <td> <b> Total Price </b> </td>
+          <td> <b> Date </b> </td>
+          <td> <b> Time </b> </td>
+          <td> <b> Address </b> </td> 
+        </tr>
         <?php
 
           require_once('connectDB.php');
@@ -29,7 +38,6 @@
           }
 
           if ($result->num_rows > 0) {
-            echo "<table>";
             while($row = $result->fetch_assoc()) {
               echo "<tr>";
               echo "<td>".$row["choco_name"]."</td>";
@@ -40,9 +48,8 @@
               echo "<td>".$row["address"]."</td>";
               echo "</tr>";
             }
-            echo "</table>";
           } else {
-            echo "table is empty";
+            echo "<td colspan='6'> <center> No Transaction </center> </td>";
           }
           $conn->close();
         ?>
