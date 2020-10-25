@@ -1,9 +1,3 @@
-<?php
-  $getusername = include('getusername.php');
-  $username = $getusername($_COOKIE["currentUsername"]);
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +10,16 @@
     <div class="navbar">
         <ul>
             <li><a class="active" href="#">Home</a></li>
-            <li><a href="lihattransaksi.php?username=<?php echo $username ?>">History</a></li>
+            <?php 
+                $check_role = include('checkRole.php');
+                $current_role = $check_role($_COOKIE["currentUsername"]);
+  
+                if (strcmp($current_role, 'superuser') == 0) {
+                    echo "<li><a href='../pages/tambah-coklat.html'>Add Coklat</a></li>";
+                } else if (strcmp($current_role, 'user') == 0) {
+                    echo "<li><a href='lihattransaksi.php?username=<?php echo $username ?>'>History</a></li>";
+                }
+            ?>
             <li class="logout-link"><a href="logout.php">Logout</a></li>
             <li class="search-bar">
               <form method="get" action="SearchPage.php">
@@ -68,7 +71,8 @@
             echo "<li class='name'>".$row["choco_name"]."</li>";
             echo "<li> <span class='title'>Harga </span>".$row["price"]."</li>";
             echo "<li> <span class='title'>Jumlah Stok Tersedia </span>".$row["amount"]."</li>";
-            echo "<li class='description'>".$row["description"]."</li>";
+            echo "<li> <span class='title'>Jumlah Stok Terjual </span>".$row["amountsold"]."</li>";
+            echo "<li> <span class='title'>Deskripsi </span>".$row["description"]."</li>";
             echo "</ul>";
             echo "<div class='btn'>";
             echo "Lihat";

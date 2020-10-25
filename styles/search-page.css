@@ -113,6 +113,7 @@ body {
 }
 
 .choco-board:hover {
+  cursor: pointer;
   background: rgba(203, 153, 126, 0.7);
 }
 
