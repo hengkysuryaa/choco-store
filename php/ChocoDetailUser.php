@@ -12,8 +12,6 @@
 
   $getusername = include('getusername.php');
   $username = $getusername($_COOKIE["currentUsername"]);
-  $role = $checkRole($_COOKIE['currentUsername']);
-
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +23,8 @@
     <body>
         <div class="navbar">
         <ul>
-            <li><a class="active" href="dashboard.php">Home</a></li>
-            <?php if ($role == 'user'): ?>
+            <li><a href="dashboard.php">Home</a></li>
             <li><a href="lihattransaksi.php?username=<?php echo $username ?>">History</a></li>
-            <?php elseif ($role == 'superuser'): ?>
-            <li><a href="tambah-coklat.php">Add New Chocolate</a></li>
-            <?php endif; ?>
             <li class="logout-link"><a href="logout.php">Logout</a></li>
             <li class="search-bar">
             <form method="get" action="SearchPage.php">
@@ -59,8 +53,6 @@
 
             $fullpath = "../" . $row["imgpath"];
 
-            $url = urlencode($fullpath); //TODO: assign dg hasil query row["urlpath"]
-
             echo "<tr>";
             echo "<td rowspan='5' class='picture-container'> <img src='". $fullpath ."' style='height:10cm; width:10cm'> </td>";
             echo "<td> Amount sold: ".$row["amountsold"]."</td>";
@@ -79,10 +71,6 @@
             echo "</tr>";
             echo "</table>";
             echo "</div> <br>";
-
-            // $dest = 'chocobuydetail.php?id='.$id;
-
-            // echo "<button class='btn-add' onclick='location.href = " .$dest. "'> <b> Buy Now </b> </button>";
         ?>
         <button class="btn-add" onclick="location.href = 'ChocoBuyDetail.php?id=<?php echo $id; ?>'"> <b> Buy Now </b> </button>
     </body>

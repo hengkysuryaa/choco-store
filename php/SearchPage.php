@@ -9,7 +9,7 @@
 <body>
     <div class="navbar">
         <ul>
-            <li><a class="active" href="dashboard.php">Home</a></li>
+            <li><a href="dashboard.php">Home</a></li>
             <?php 
                 $check_role = include('checkRole.php');
                 $getUsername = include('getusername.php');

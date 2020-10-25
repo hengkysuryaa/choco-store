@@ -51,9 +51,9 @@ td {
   }
   
 .active {
-    color: #ffffff !important;
-    text-decoration: underline !important;
-  }
+  color: #ffffff !important;
+  background-color: #8e6b58;
+}
   
 .logout-link {
     float: right !important;

@@ -37,7 +37,7 @@ body {
 
 .active {
   color: #ffffff !important;
-  text-decoration: underline !important;
+  background-color: #8e6b58;
 }
 
 .logout-link {

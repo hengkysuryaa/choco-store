@@ -73,7 +73,10 @@ td {
     background-color: brown; 
     color: antiquewhite;
 }
-
+.active {
+  color: #ffffff !important;
+  background-color: #8e6b58;
+}
 .navbar ul {
     position: fixed;
     top: 0;

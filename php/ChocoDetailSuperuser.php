@@ -9,11 +9,6 @@
   if ($checkRole($_COOKIE['currentUsername']) == 'user') {
     header('Location: dashboard.php');
   }
-
-  $getusername = include('getusername.php');
-  $username = $getusername($_COOKIE["currentUsername"]);
-  $role = $checkRole($_COOKIE['currentUsername']);
-
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +20,8 @@
     <body>
         <div class="navbar">
         <ul>
-            <li><a class="active" href="dashboard.php">Home</a></li>
-            <?php if ($role == 'user'): ?>
-            <li><a href="lihattransaksi.php?username=<?php echo $username ?>">History</a></li>
-            <?php elseif ($role == 'superuser'): ?>
+            <li><a href="dashboard.php">Home</a></li>
             <li><a href="tambah-coklat.php">Add New Chocolate</a></li>
-            <?php endif; ?>
             <li class="logout-link"><a href="logout.php">Logout</a></li>
             <li class="search-bar">
             <form method="get" action="SearchPage.php">

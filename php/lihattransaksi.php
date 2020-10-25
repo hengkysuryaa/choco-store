@@ -6,7 +6,7 @@
   if (!isset($_COOKIE['currentUsername'])) {
     return header('Location: login.php');
   }
-  
+
   if ($checkRole($_COOKIE['currentUsername']) == 'superuser') {
     header('Location: dashboard.php');
   }
@@ -26,8 +26,8 @@
   <body>
     <div class="navbar">
         <ul>
-            <li><a class="active" href="dashboard.php">Home</a></li>
-            <li><a href="lihattransaksi.php?username=<?php echo $uname ?>">History</a></li>
+            <li><a href="dashboard.php">Home</a></li>
+            <li><a class="active" href="lihattransaksi.php?username=<?php echo $uname ?>">History</a></li>
             <li class="logout-link"><a href="logout.php">Logout</a></li>
             <li class="search-bar">
             <form method="get" action="SearchPage.php">
@@ -55,12 +55,8 @@
 
           require_once('connectDB.php');
 
-          // $conn = mysqli_connect("localhost", "root", "aaaaaaab", "willy_wangky");
-          // if ($conn->connect_error) {
-          //   die("Connection failed: " . $conn->connect_error);
-          // }
           $username = $_GET["username"];
-          $sql = "SELECT * FROM transaksi WHERE username='$username';";
+          $sql = "SELECT * FROM transaksi WHERE username='$username' ORDER BY `date` DESC, `time` DESC;";
           try {
             $result = $conn->query($sql);
           } catch (Exception $e) {

@@ -22,8 +22,8 @@
   <body>
     <div class="navbar">
         <ul>
-            <li><a class="active" href="dashboard.php">Home</a></li>
-            <li><a href="tambah-coklat.php">Add New Chocolate</a></li>
+            <li><a href="dashboard.php">Home</a></li>
+            <li><a class="active" href="tambah-coklat.php">Add New Chocolate</a></li>
             <li class="logout-link"><a href="logout.php">Logout</a></li>
             <li class="search-bar">
             <form method="get" action="SearchPage.php">
@@ -42,15 +42,15 @@
             <form enctype="multipart/form-data" action="TambahCoklat.php" method="POST">
               <tr>
                 <td> Name: </td>
-                <td> <input type="text" name="name" size="50"> </td>
+                <td> <input type="text" name="name" size="50" autocomplete="off"> </td>
               </tr>
               <tr> 
                 <td> Price: </td>
-                <td> <input type="text" name="price" size="50"> </td>
+                <td> <input type="text" name="price" size="50" autocomplete="off"> </td>
               </tr>
               <tr>
                 <td> Description:  </td>
-                <td> <textarea style="resize:none;" rows="5" cols="52" name="desc" required></textarea> </td>
+                <td> <textarea style="resize:none;" rows="5" cols="52" name="desc" autocomplete="off" required></textarea> </td>
               </tr>
               <tr>
                 <td> Upload Image (max 2MB): </td>
@@ -58,7 +58,7 @@
               </tr>
               <tr>
                 <td> Amount: </td>
-                <td> <input type="text" name="count" size="50"> </td>
+                <td> <input type="text" name="count" autocomplete="off" size="50"> </td>
               </tr>
               <tr> 
                 <td colspan="2"> <button class="btn-add" type="submit"> <b> Add Chocolate </b> </button> 

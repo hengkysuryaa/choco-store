@@ -34,10 +34,15 @@
           </form>
         </li>
     </ul>
+  </div> <br> <br> <br> <br> <br>
+
+  <div class="username" style="margin-left:100px">
+    <h2> Hello, <?php echo $username ?> </h2>
   </div> 
+
   <?php
     //ambil semua database coklat yang ada
-    $sql = "SELECT * FROM coklat ORDER BY amountsold DESC LIMIT 10";
+    $sql = "SELECT * FROM coklat WHERE amount > 0 ORDER BY amountsold DESC LIMIT 10";
     try {
       $result = $conn->query($sql);
     } catch (Exception $e) {
