@@ -37,7 +37,7 @@
   </div> 
   <?php
     //ambil semua database coklat yang ada
-    $sql = "SELECT * FROM coklat ORDER BY amountsold DESC";
+    $sql = "SELECT * FROM coklat ORDER BY amountsold DESC LIMIT 10";
     try {
       $result = $conn->query($sql);
     } catch (Exception $e) {
@@ -54,7 +54,7 @@
         if ($role == 'user') {
           echo "<a href='ChocoDetailUser.php?id=". $row["idcoklat"] ."'>";
         } elseif ($role == 'superuser') {
-          echo "<a href='ChocoDetailSuperuser.php?id='". $row["idcoklat"] ."'>";
+          echo "<a href='ChocoDetailSuperuser.php?id=". $row["idcoklat"] ."'>";
         }
         echo "<div class='choco-card'>";
         echo "<div class='choco-title'><b>".$row["choco_name"]."</b></div>";

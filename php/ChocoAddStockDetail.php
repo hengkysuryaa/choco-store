@@ -1,3 +1,21 @@
+<?php
+  require_once 'connectDB.php';
+
+  $checkRole = include('checkRole.php');
+  if (!isset($_COOKIE['currentUsername'])) {
+    return header('Location: login.php');
+  }
+
+  if ($checkRole($_COOKIE['currentUsername']) == 'user') {
+    header('Location: dashboard.php');
+  }
+
+  $getusername = include('getusername.php');
+  $username = $getusername($_COOKIE["currentUsername"]);
+  $role = $checkRole($_COOKIE['currentUsername']);
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,6 +24,22 @@
         <script src="../scripts/choco-detail.js"> </script>
     </head>
     <body>
+        <div class="navbar">
+        <ul>
+            <li><a class="active" href="dashboard.php">Home</a></li>
+            <?php if ($role == 'user'): ?>
+            <li><a href="lihattransaksi.php?username=<?php echo $username ?>">History</a></li>
+            <?php elseif ($role == 'superuser'): ?>
+            <li><a href="tambah-coklat.php">Add New Chocolate</a></li>
+            <?php endif; ?>
+            <li class="logout-link"><a href="logout.php">Logout</a></li>
+            <li class="search-bar">
+            <form method="get" action="SearchPage.php">
+                <input type="text" name="search" id="search" autocomplete="off" placeholder="Search">
+            </form>
+            </li>
+        </ul>
+        </div> <br> <br> <br>
         <div class="flex-container">
             <h3> Add Stock </h3>
         </div>
@@ -54,7 +88,7 @@
                             <input class="plus-minus-button" type="button" onclick="minusButton()" value="-">
                             <input type="number" id="quantity" name="quantity" value="1" style="text-align: center;" readonly required>
                             <input class="plus-minus-button" type="button" onclick="plusButton()" value="+">  <br> <br>             
-                            <button class="btn-add" type="submit"> <b> Add </b> </button>
+                            <button class="btn-add2" type="submit"> <b> Add </b> </button>
                         </form>
                         <button class="btn-cancel" type="submit" onclick="location.href = 'ChocoDetailSuperuser.php?id=<?php echo $id; ?>'"> <b> Cancel </b> </button>
                     </td>

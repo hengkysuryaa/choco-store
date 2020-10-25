@@ -1,5 +1,12 @@
 <?php
+
+  require_once 'connectDB.php';
+
   $checkRole = include('checkRole.php');
+  if (!isset($_COOKIE['currentUsername'])) {
+    return header('Location: login.php');
+  }
+  
   if ($checkRole($_COOKIE['currentUsername']) == 'user') {
     header('Location: dashboard.php');
   }
@@ -13,6 +20,19 @@
   </head>
 
   <body>
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="dashboard.php">Home</a></li>
+            <li><a href="tambah-coklat.php">Add New Chocolate</a></li>
+            <li class="logout-link"><a href="logout.php">Logout</a></li>
+            <li class="search-bar">
+            <form method="get" action="SearchPage.php">
+                <input type="text" name="search" id="search" autocomplete="off" placeholder="Search">
+            </form>
+            </li>
+        </ul>
+      </div> <br> <br> <br>
+
     <div class="flex-container">
       <h3> Add New Chocolate </h3>
     </div>
