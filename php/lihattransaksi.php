@@ -1,3 +1,21 @@
+<?php
+
+  require_once 'connectDB.php';
+
+  $checkRole = include('checkRole.php');
+  if (!isset($_COOKIE['currentUsername'])) {
+    return header('Location: login.php');
+  }
+  
+  if ($checkRole($_COOKIE['currentUsername']) == 'superuser') {
+    header('Location: dashboard.php');
+  }
+
+  $getusername = include('getusername.php');
+  $uname = $getusername($_COOKIE["currentUsername"]);
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +24,18 @@
   </head>
 
   <body>
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="dashboard.php">Home</a></li>
+            <li><a href="lihattransaksi.php?username=<?php echo $uname ?>">History</a></li>
+            <li class="logout-link"><a href="logout.php">Logout</a></li>
+            <li class="search-bar">
+            <form method="get" action="SearchPage.php">
+                <input type="text" name="search" id="search" autocomplete="off" placeholder="Search">
+            </form>
+            </li>
+        </ul>
+      </div> <br> <br> <br>
     <div class="flex-container">
       <h3> Transaction History </h3>
     </div>

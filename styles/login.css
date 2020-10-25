@@ -1,5 +1,5 @@
 body {
-  background-color: #6d6875;
+  background-color:  #fff1e6;
 }
 
 .flex-container {
@@ -9,7 +9,8 @@ body {
   align-items: center;
   margin: 10em auto;
   padding: 0;
-  background-color: #f9dcc4;
+  background-color: rgba(203, 153, 126, 0.5);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
   border-radius: 30px;
   width: 25em;
 }

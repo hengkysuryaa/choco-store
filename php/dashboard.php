@@ -37,7 +37,7 @@
   </div> 
   <?php
     //ambil semua database coklat yang ada
-    $sql = "SELECT * FROM coklat ORDER BY amountsold DESC";
+    $sql = "SELECT * FROM coklat ORDER BY amountsold DESC LIMIT 10";
     try {
       $result = $conn->query($sql);
     } catch (Exception $e) {

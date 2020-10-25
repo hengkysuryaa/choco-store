@@ -1,3 +1,21 @@
+<?php
+  require_once 'connectDB.php';
+
+  $checkRole = include('checkRole.php');
+  if (!isset($_COOKIE['currentUsername'])) {
+    return header('Location: login.php');
+  }
+
+  if ($checkRole($_COOKIE['currentUsername']) == 'superuser') {
+    header('Location: dashboard.php');
+  }
+
+  $getusername = include('getusername.php');
+  $username = $getusername($_COOKIE["currentUsername"]);
+  $role = $checkRole($_COOKIE['currentUsername']);
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,6 +23,23 @@
         <link rel="stylesheet" href="../styles/choco-detail.css">
     </head>
     <body>
+        <div class="navbar">
+        <ul>
+            <li><a class="active" href="dashboard.php">Home</a></li>
+            <?php if ($role == 'user'): ?>
+            <li><a href="lihattransaksi.php?username=<?php echo $username ?>">History</a></li>
+            <?php elseif ($role == 'superuser'): ?>
+            <li><a href="tambah-coklat.php">Add New Chocolate</a></li>
+            <?php endif; ?>
+            <li class="logout-link"><a href="logout.php">Logout</a></li>
+            <li class="search-bar">
+            <form method="get" action="SearchPage.php">
+                <input type="text" name="search" id="search" autocomplete="off" placeholder="Search">
+            </form>
+            </li>
+        </ul>
+        </div> <br> <br> <br>
+
         <?php 
             include 'connectDB.php';
 
