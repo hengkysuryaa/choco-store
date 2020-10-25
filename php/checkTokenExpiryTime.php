@@ -10,10 +10,10 @@ return function ($cookie_auth) {
     $checkRole->close();
     $conn->close();
 
-    $current_timestamp = new DateTime(date('Y-m-d H:i:s'));
+    $current_timestamp = new DateTime("now");
     $token_expiry_timestamp = new DateTime($token_expiry_time);
 
-    if ($token_expiry_timestamp > $current_timestamp) {
+    if ($token_expiry_timestamp < $current_timestamp) {
       return false;
     }
     return true;

@@ -9,7 +9,7 @@
   $checkTokenExpiry = include('checkTokenExpiryTime.php');
   $isTokenAvailable = $checkTokenExpiry($_COOKIE['currentUsername']);
   if (!$isTokenAvailable) {
-    return header('Location: logout.php');
+    return header('Location: logout.php?s=0');
   }
 
   if ($checkRole($_COOKIE['currentUsername']) == 'user') {

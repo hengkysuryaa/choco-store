@@ -22,20 +22,13 @@
   if ($ok == 1) {
     $target_path_to = '../' . $target_path;
     if(move_uploaded_file($_FILES["pic"]["tmp_name"], $target_path_to) == 1) {
-      //echo "upload gambar berhasil";
     } else {
       //echo "gagal";
     }
   }
 
   //insert to database
-
   require_once ("connectDB.php");
-
-  // $conn = mysqli_connect("localhost", "root", "aaaaaaab", "willy_wangky");
-  // if ($conn->connect_error) {
-  //   die("Connection failed: " . $conn->connect_error);
-  // }
 
   $sql = "INSERT INTO coklat(choco_name, price, imgpath, amount, amountsold, description) VALUES ('" . $nama_coklat . "', " . $harga_coklat . ", '" . $target_path . "', " . $jumlah_coklat . ", 0, '" . $deskripsi_coklat . "')";
 

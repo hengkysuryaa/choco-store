@@ -15,9 +15,9 @@ $registerUser->close();
 
 $loginCred = bin2hex(random_bytes(20));
 
-$currentTime = date("Y-m-d H:i:s");
-$fiveMinutesAfterTime = $currentTime + (60 * 5);
-$tokenExpiryTime =  date("Y-m-d H:i:s", $futureDate);
+$tokenExpiryTime = new DateTime('now');
+$tokenExpiryTime->add(new DateInterval('PT30M'));
+$tokenExpiryTime = $tokenExpiryTime->format("Y-m-d H:i:s");
 $registerCookie = $conn->prepare("INSERT INTO `cookies` VALUES (?, ?, ?)");
 $registerCookie->bind_param("sss", $loginCred, $email, $tokenExpiryTime);
 

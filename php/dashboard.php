@@ -5,11 +5,11 @@
     return header('Location: login.php');
   }
 
-  // $checkTokenExpiry = include('checkTokenExpiryTime.php');
-  // $isTokenAvailable = $checkTokenExpiry($_COOKIE['currentUsername']);
-  // if (!$isTokenAvailable) {
-  //   return header('Location: logout.php');
-  // }
+  $checkTokenExpiry = include('checkTokenExpiryTime.php');
+  $isTokenAvailable = $checkTokenExpiry($_COOKIE['currentUsername']);
+  if (!$isTokenAvailable) {
+    return header('Location: logout.php?s=0');
+  }
 
   $checkRole = include('checkRole.php');
   $getusername = include('getusername.php');
