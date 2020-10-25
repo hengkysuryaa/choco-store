@@ -17,7 +17,7 @@
                 $username = $getUsername($_COOKIE['currentUsername']);
 
                 if (strcmp($current_role, 'superuser') == 0) {
-                    echo "<li><a href='tambah-coklat.php'>Add Coklat</a></li>";
+                    echo "<li><a href='tambah-coklat.php'>Add New Chocolate</a></li>";
                 } else if (strcmp($current_role, 'user') == 0) {
                     echo "<li><a href='lihattransaksi.php?username=<?php echo $username ?>'>History</a></li>";
                 }
@@ -34,6 +34,14 @@
     <br>
     <br>
     <br>
+
+    <h1>
+        <?php 
+            $search = $_GET["search"];
+            echo "<h1 style='margin-left:30px;'> Search result for query: '" . $search . "' </h1>";
+        ?>
+    </h1>
+
     
       <?php 
 
@@ -42,8 +50,6 @@
         $content_per_page = 3;
         $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
         $start = ($page>1) ? ($page * $content_per_page) - $content_per_page : 0;
-
-        $search = $_GET["search"];
 
         $sql = "SELECT * FROM coklat WHERE choco_name LIKE '%$search%'";
         $result = mysqli_query($conn, $sql);
@@ -54,50 +60,74 @@
         $sql2 = "SELECT * FROM coklat WHERE choco_name LIKE '%$search%' LIMIT $start, $content_per_page";
         $result2 = mysqli_query($conn, $sql2);
 
-        while ($row = mysqli_fetch_assoc($result2)) {
+        if ($total_row == 0) {
+            echo "<i style='margin-left:30px;'> No result found for keyword '" . $search . "' </i>";
+        } else {
 
-            $full_img_path = "../" . $row["imgpath"];
+            echo "<i style='margin-left:30px;'> Found " . $total_row . " results for keyword '" . $search . "' </i>";
 
-            
-            echo "<a href='ChocoDetailUser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
-            echo "<div class='choco-board'>";
+            while ($row = mysqli_fetch_assoc($result2)) {
+                $full_img_path = "../" . $row["imgpath"];
 
-            // onclick="location.href='YOUR-URL-HERE';"
+                if (strcmp($current_role, 'superuser') == 0) {
+                    echo "<a href='ChocoDetailSuperuser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
+                } else if (strcmp($current_role, 'user') == 0) {
+                    echo "<a href='ChocoDetailUser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
+                }
 
-            echo "<div>";
-            echo "<img src='". $full_img_path ."'>";
-            echo "</div>";
+                echo "<div class='choco-board'>";
 
-            echo "<div class='choco-details'>";
-            echo "<ul>";
-            echo "<li class='name'>".$row["choco_name"]."</li>";
-            echo "<li> <span class='title'>Harga </span>".$row["price"]."</li>";
-            echo "<li> <span class='title'>Jumlah Stok Tersedia </span>".$row["amount"]."</li>";
-            echo "<li> <span class='title'>Jumlah Stok Terjual </span>".$row["amountsold"]."</li>";
-            echo "<li> <span class='title'>Deskripsi </span>".$row["description"]."</li>";
-            echo "</ul>";
-            echo "<div class='btn'>";
-            echo "Lihat";
-            echo "</div>";
-            echo "</div>";
+                echo "<div>";
+                echo "<img src='". $full_img_path ."'>";
+                echo "</div>";
 
-            echo "</div>";
+                echo "<div class='choco-details'>";
+                echo "<ul>";
+                echo "<li class='name'>".$row["choco_name"]."</li>";
+                echo "<li> <span class='title'>Harga </span> Rp ".$row["price"]."</li>";
+                echo "<li> <span class='title'>Jumlah Stok Tersedia </span>".$row["amount"]." buah </li>";
+                echo "<li> <span class='title'>Jumlah Stok Terjual </span>".$row["amountsold"]." buah </li>";
+                echo "<li> <span class='title'>Deskripsi </span>".$row["description"]."</li>";
+                echo "</ul>";
+                echo "<div class='btn'>";
+                echo "Lihat";
+                echo "</div>";
+                echo "</div>";
 
-            echo "</a>";
+                echo "</div>";
 
-            
-        }
+                echo "</a>";   
+            }
+        }        
     ?>
 <br>
 <center> <div>
     <?php 
+        $current_page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
+
         echo "<div class='pagination'>";
         echo "<ul>";
+
+        if ($current_page > 1) {
+            $prev_page = $current_page - 1;
+            echo "<div class='search-page'>";
+            echo "<li><a href='?search=$search&page=$prev_page'> &larr; </a></li>";
+            echo "</div>";
+        }
+
         for($i=1; $i<=$total_page; $i++) {
             echo "<div class='search-page'>";
             echo "<li><a href='?search=$search&page=$i'>".$i."</a></li>";
             echo "</div>";
         }
+
+        if ($current_page < $total_page) {
+            $next_page = $current_page + 1;
+            echo "<div class='search-page'>";
+            echo "<li><a href='?search=$search&page=$next_page'> &rarr; </a></li>";
+            echo "</div>";
+        }
+
         echo "</ul>";
         echo "</div>";
     ?>

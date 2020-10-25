@@ -51,6 +51,7 @@
         if ($i % 4 == 0) {
           echo "<div class='choco-card-container'>";
         }
+
         if ($role == 'user') {
           echo "<a href='ChocoDetailUser.php?id=". $row["idcoklat"] ."'>";
         } elseif ($role == 'superuser') {
