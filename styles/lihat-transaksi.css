@@ -65,8 +65,24 @@ td {
   }
   
 #search {
-    padding: 6px 15em 6px 5px;
-    border: none;
-    font-size: 12px;
-  }
+  padding: 6px 15em 6px 5px;
+  border: none;
+  font-size: 12px;
+}
+
+.choco-detail-href {
+  text-decoration: none;
+}
+
+.choco-detail-href:visited { 
+  text-decoration: none;
+  color: black;
+}
+
+.choco-detail-href:hover { 
+  text-decoration: none;
+  color: blue;
+}
+
+
 
