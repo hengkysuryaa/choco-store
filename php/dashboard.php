@@ -25,10 +25,14 @@
         <?php if ($role == 'user'): ?>
           <li><a href="lihattransaksi.php?username=<?php echo $username ?>">History</a></li>
         <?php elseif ($role == 'superuser'): ?>
-          <li><a href="tambah-coklat.php?username=<?php echo $username ?>">Add New Chocolate</a></li>
+          <li><a href="tambah-coklat.php">Add New Chocolate</a></li>
         <?php endif; ?>
         <li class="logout-link"><a href="logout.php">Logout</a></li>
-        <li class="search-bar"><input type="text" name="search" id="search" placeholder="Search"></li>
+        <li class="search-bar">
+          <form method="get" action="SearchPage.php">
+            <input type="text" name="search" id="search" autocomplete="off" placeholder="Search">
+          </form>
+        </li>
     </ul>
   </div> 
   <?php

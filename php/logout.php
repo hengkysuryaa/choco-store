@@ -1,13 +1,15 @@
 <?php
 require_once 'connectDB.php';
 
-$deleteCookie = $conn->prepare("DELETE FROM `cookies` WHERE `cookie_auth`=?");
-$deleteCookie->bind_param("s", $_COOKIE['currentUsername']);
-$deleteCookie->execute();
-
-setcookie('currentUsername', '', time() - 60, '/');
-$deleteCookie->close();
-$conn->close();
+if (isset($_COOKIE['currentUsername'])) {
+  $deleteCookie = $conn->prepare("DELETE FROM `cookies` WHERE `cookie_auth`=?");
+  $deleteCookie->bind_param("s", $_COOKIE['currentUsername']);
+  $deleteCookie->execute();
+  
+  setcookie('currentUsername', '', time() - 60, '/');
+  $deleteCookie->close();
+  $conn->close();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

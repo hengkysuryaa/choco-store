@@ -117,7 +117,6 @@ body {
   border-radius: 5px;
 }
 
-
 ::placeholder {
   text-align: left !important;
   color: #d4d4d4 !important;
@@ -127,10 +126,3 @@ body {
   text-align: left !important;
   color: #d4d4d4 !important;
 }
-
-:-ms-input-placeholder {
-  text-align: left;
-  color: #d4d4d4;
-}
->>>>>>> acbb734 (Add navbar to dashboard)
->>>>>>> 7f657e7 (Add navbar to dashboard)
