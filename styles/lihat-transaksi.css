@@ -10,13 +10,17 @@ td {
 
 .flex-container {
 	display: flex;
-    background-color: rgba(203, 153, 126, 0.5);
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 20px;
-    padding-left: 20px;
-    border-radius: 20px;
+  background-color: rgba(203, 153, 126, 0.5);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  border-radius: 20px;
+}
+
+.flex-container table {
+  margin: 30px 30px 30px 30px;
 }
 
 .navbar ul {
@@ -65,8 +69,24 @@ td {
   }
   
 #search {
-    padding: 6px 15em 6px 5px;
-    border: none;
-    font-size: 12px;
-  }
+  padding: 6px 15em 6px 5px;
+  border: none;
+  font-size: 12px;
+}
+
+.choco-detail-href {
+  text-decoration: none;
+}
+
+.choco-detail-href:visited { 
+  text-decoration: none;
+  color: black;
+}
+
+.choco-detail-href:hover { 
+  text-decoration: none;
+  color: blue;
+}
+
+
 

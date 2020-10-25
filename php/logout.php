@@ -23,6 +23,11 @@ if (isset($_COOKIE['currentUsername'])) {
   <body>
     <div class="flex-container">
       <h1>You've been logged out!</h1>
+      <?php 
+        if($_GET["s"] == '0') {
+          echo "<h4>Token expired!</h4>";
+        }
+      ?>
       <h4>You'll be redirected to the login page</h4>
     </div>
   </body>
