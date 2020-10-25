@@ -66,7 +66,7 @@
           if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
               echo "<tr>";
-              echo "<td>".$row["choco_name"]."</td>";
+              echo "<td><a href='ChocoDetailUser.php?id=". $row["idcoklat"] ."'>".$row["choco_name"]."</a></td>";
               echo "<td>".$row["amount"]."</td>";
               echo "<td>".$row["totalprice"]."</td>";
               echo "<td>".$row["date"]."</td>";
