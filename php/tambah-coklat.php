@@ -1,3 +1,10 @@
+<?php
+  $checkRole = include('checkRole.php');
+  if ($checkRole($_COOKIE['currentUsername']) == 'user') {
+    header('Location: dashboard.php');
+  }
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,7 +19,7 @@
 
     <div class="flex-container">
       <table border="0" style="width: 100%;">
-            <form enctype="multipart/form-data" action="../php/TambahCoklat.php" method="POST">
+            <form enctype="multipart/form-data" action="TambahCoklat.php" method="POST">
               <tr>
                 <td> Name: </td>
                 <td> <input type="text" name="name" size="50"> </td>
@@ -35,7 +42,7 @@
               </tr>
               <tr> 
                 <td colspan="2"> <button class="btn-add" type="submit"> <b> Add Chocolate </b> </button> 
-                  <button class="btn-cancel" onclick="location.href = '../php/dashboard-superuser.php'"> <b> Cancel </b> </button>
+                  <button class="btn-cancel" onclick="location.href = 'dashboard.php'"> <b> Cancel </b> </button>
                 </td>
               </tr>
             </form>
