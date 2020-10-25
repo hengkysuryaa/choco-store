@@ -17,7 +17,7 @@
                 $username = $getUsername($_COOKIE['currentUsername']);
 
                 if (strcmp($current_role, 'superuser') == 0) {
-                    echo "<li><a href='tambah-coklat.php'>Add Coklat</a></li>";
+                    echo "<li><a href='tambah-coklat.php'>Add New Chocolate</a></li>";
                 } else if (strcmp($current_role, 'user') == 0) {
                     echo "<li><a href='lihattransaksi.php?username=<?php echo $username ?>'>History</a></li>";
                 }
@@ -38,7 +38,7 @@
     <h1>
         <?php 
             $search = $_GET["search"];
-            echo "<h1 style='margin-left:30px;'> Search result for query: " . $search . "</h1>";
+            echo "<h1 style='margin-left:30px;'> Search result for query: '" . $search . "' </h1>";
         ?>
     </h1>
 
@@ -61,15 +61,20 @@
         $result2 = mysqli_query($conn, $sql2);
 
         if ($total_row == 0) {
-            echo "<i style='margin-left:30px;'> No result found for keyword " . $search . " </i>";
+            echo "<i style='margin-left:30px;'> No result found for keyword '" . $search . "' </i>";
         } else {
 
-            echo "<i style='margin-left:30px;'> Found " . $total_row . " results for keyword " . $search . " </i>";
+            echo "<i style='margin-left:30px;'> Found " . $total_row . " results for keyword '" . $search . "' </i>";
 
             while ($row = mysqli_fetch_assoc($result2)) {
                 $full_img_path = "../" . $row["imgpath"];
 
-                echo "<a href='ChocoDetailUser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
+                if (strcmp($current_role, 'superuser') == 0) {
+                    echo "<a href='ChocoDetailSuperuser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
+                } else if (strcmp($current_role, 'user') == 0) {
+                    echo "<a href='ChocoDetailUser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
+                }
+
                 echo "<div class='choco-board'>";
 
                 echo "<div>";
@@ -79,9 +84,9 @@
                 echo "<div class='choco-details'>";
                 echo "<ul>";
                 echo "<li class='name'>".$row["choco_name"]."</li>";
-                echo "<li> <span class='title'>Harga </span>".$row["price"]."</li>";
-                echo "<li> <span class='title'>Jumlah Stok Tersedia </span>".$row["amount"]."</li>";
-                echo "<li> <span class='title'>Jumlah Stok Terjual </span>".$row["amountsold"]."</li>";
+                echo "<li> <span class='title'>Harga </span> Rp ".$row["price"]."</li>";
+                echo "<li> <span class='title'>Jumlah Stok Tersedia </span>".$row["amount"]." buah </li>";
+                echo "<li> <span class='title'>Jumlah Stok Terjual </span>".$row["amountsold"]." buah </li>";
                 echo "<li> <span class='title'>Deskripsi </span>".$row["description"]."</li>";
                 echo "</ul>";
                 echo "<div class='btn'>";

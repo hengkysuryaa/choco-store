@@ -102,6 +102,11 @@ body {
 }
 
 .choco-board {
+  display:flex;
+  justify-content: center;
+
+  /*padding: 3px;*/
+
   border-radius: 5px;
   margin: 100px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
@@ -120,7 +125,9 @@ body {
 .choco-board > div {
   top: 20px;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: center;
+  /*border: 1px solid #000;*/
+  margin:2px;
 }
 
 .choco-board img {
@@ -136,6 +143,7 @@ body {
 }
 
 .choco-board .choco-details {
+  width:750px;
   margin-left: 50px;
 }
 
