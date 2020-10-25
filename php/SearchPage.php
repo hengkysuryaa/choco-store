@@ -9,13 +9,15 @@
 <body>
     <div class="navbar">
         <ul>
-            <li><a class="active" href="#">Home</a></li>
+            <li><a class="active" href="dashboard.php">Home</a></li>
             <?php 
                 $check_role = include('checkRole.php');
+                $getUsername = include('getusername.php');
                 $current_role = $check_role($_COOKIE["currentUsername"]);
-  
+                $username = $getUsername($_COOKIE['currentUsername']);
+
                 if (strcmp($current_role, 'superuser') == 0) {
-                    echo "<li><a href='../pages/tambah-coklat.html'>Add Coklat</a></li>";
+                    echo "<li><a href='tambah-coklat.php'>Add Coklat</a></li>";
                 } else if (strcmp($current_role, 'user') == 0) {
                     echo "<li><a href='lihattransaksi.php?username=<?php echo $username ?>'>History</a></li>";
                 }

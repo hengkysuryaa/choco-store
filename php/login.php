@@ -1,42 +1,38 @@
 <?php
-require_once 'connectDB.php';
-
-$checkRole = include 'checkRole.php';
-$username = $_POST['username'];
-
-$getPassword = $conn->prepare("SELECT `password` FROM `users` WHERE `username`=?");
-$getPassword->bind_param("s", $username);
-$getPassword->execute();
-$getPassword->bind_result($result);
-$getPassword->fetch();
-$getPassword->close();
-
-if (isset($result)) {
-    if (password_verify($_POST['password'], $result)) {
-        $getCookie = $conn->prepare("SELECT `cookie_auth` FROM `cookies` WHERE `username`=?");
-        $getCookie->bind_param("s", $username);
-        $getCookie->execute();
-        $getCookie->bind_result($loginCred);
-        $getCookie->fetch();
-        if (isset($loginCred)) {
-            setcookie('currentUsername', $loginCred, time() + (86400 * 30), '/');
-        } else {
-            $loginCred = bin2hex(random_bytes(20));
-            $registerCookie = $conn->prepare("INSERT INTO `cookies` VALUES (?, ?)");
-            $registerCookie->bind_param("ss", $loginCred, $username);
-            $registerCookie->execute();
-            setcookie('currentUsername', $loginCred, time() + (86400 * 30), '/');
-            $registerCookie->close();
-        }
-        $getCookie->close();
-
-        header('Location: ../php/dashboard-user.php');
-    } else {
-        header('Location: ../pages/login.html');
+    if (isset($_COOKIE['currentUsername'])) {
+        header('Location: dashboard.php');
     }
-} else {
-    header('Location: ../pages/login.html');
-}
+?>
+<!DOCTYPE html>
+<html lang="en">
 
-$_POST = array();
-$conn->close();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Factory: Login</title>
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+
+<body>
+    <div class="flex-container login-header">
+        <h1>Willy Wangky Choco Factory</h1>
+    </div>
+    <div class="flex-container">
+        <div class="login-form">
+            <form action="logincheck.php" method="POST">
+                <div class="form-control">
+                    <label for="email"><strong>Email</strong></label>
+                    <input class="input" type="email" name="email" id="email" required="" placeholder="example007@example.com">
+                </div>
+                <div class="form-control">
+                    <label for="password"><strong>Password</strong></label>
+                    <input class="input" type="password" name="password" id="password" required="" placeholder="********">
+                </div>
+                <button class="btn-login" type="submit">Login</button>
+            </form>
+            <a href="register.php">Don't have account yet? Sign up</a>
+        </div>
+    </div>
+</body>
+
+</html>
