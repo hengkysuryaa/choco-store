@@ -9,15 +9,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="../styles/dashboard.css">
-    <!-- <link rel="alternate stylesheet" href="../styles/searchpage.css"> -->
+    <title>Search</title>
+    <link rel="stylesheet" href="../styles/search-page.css">
 </head>
 <body>
-    <ul>
-        <li><a class="active" href="#">Home</a></li>
-        <li class="logout-link"><a href="logout.php">Logout</a></li>
-    </ul>
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="lihattransaksi.php?username=<?php echo $username ?>">History</a></li>
+            <li class="logout-link"><a href="logout.php">Logout</a></li>
+            <li class="search-bar">
+              <form method="get" action="SearchPage.php">
+                  <input type="text" name="search" id="search" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+        </ul>
+    </div>
 
     <br>
     <br>
@@ -44,27 +51,40 @@
 
         while ($row = mysqli_fetch_assoc($result2)) {
 
-            echo "<center>";
-            echo "<table border='1'>";
-            echo "<tr>";
-            echo "<td>".$row["choco_name"]."</td>";
-            echo "<td> Price: ".$row["price"]."</td>";
-            echo "</tr>";
-            echo "</table>";
-            echo "<br>";
-            echo "</center>";
+            $full_img_path = "../" . $row["imgpath"];
 
+            echo "<div class='choco-board'>";
+
+            echo "<div>";
+            echo "<img src='". $full_img_path ."'>";
+            echo "</div>";
+
+            echo "<div class='choco-details'>";
+            echo "<ul>";
+            echo "<li class='name'>".$row["choco_name"]."</li>";
+            echo "<li> <span class='title'>Harga </span>".$row["price"]."</li>";
+            echo "<li> <span class='title'>Jumlah Stok Tersedia </span>".$row["amount"]."</li>";
+            echo "<li class='description'>".$row["description"]."</li>";
+            echo "</ul>";
+            echo "<div class='btn'>";
+            echo "Lihat";
+            echo "</div>";
+            echo "</div>";
+
+            echo "</div>";
         }
     ?>
 <br>
 <center> <div>
     <?php 
         echo "<div class='pagination'>";
-        // echo "<ul>";
+        echo "<ul>";
         for($i=1; $i<=$total_page; $i++) {
-            echo "<a href='?search=$search&page=$i'>".$i."</a>";
+            echo "<div class='search-page'>";
+            echo "<li><a href='?search=$search&page=$i'>".$i."</a></li>";
+            echo "</div>";
         }
-        // echo "</ul>";
+        echo "</ul>";
         echo "</div>";
     ?>
 </div> </center>

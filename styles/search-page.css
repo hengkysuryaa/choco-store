@@ -1,0 +1,173 @@
+body {
+  background-color: #fff1e6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.navbar ul {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #cb997e;
+}
+
+.navbar ul li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
+  color: #e9ecef;
+  text-align: center;
+  font-size: 16px;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+.navbar li a:hover {
+  background-color: #ddbea9;
+  color: #ffffff;
+}
+
+.navbar .active {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.nvabar .logout-link {
+  float: right;
+}
+
+.navbar .search-bar {
+  float: right;
+  margin: 10px 20em;
+}
+
+#search {
+  padding: 6px 15em 6px 5px;
+  border: none;
+  font-size: 12px;
+}
+
+::placeholder {
+  text-align: left;
+  color: #d4d4d4;
+}
+
+:-ms-input-placeholder {
+  text-align: left;
+  color: #d4d4d4;
+}
+
+.pagination {
+  display: inline;
+}
+
+.pagination ul li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.search-page {
+  font-size: 25px;
+  display: inline;
+  border-radius: 5px;
+  margin-left: 10px;
+  opacity: 0.7;
+  padding: 5px;
+  transition: 0.3s;
+  background: rgba(204, 192, 184, 0);
+}
+
+.search-page a {
+  color: black;
+  text-decoration: none;
+}
+
+.search-page a:visited { 
+  text-decoration: none; 
+}
+
+.search-page:hover {
+  background: rgba(204, 192, 184, 1);
+}
+
+.choco-board {
+  border-radius: 5px;
+  margin: 100px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  /*background-color: #cb997e;*/
+  background: rgba(203, 153, 126, 0.5);
+  padding: 20px;
+}
+
+.choco-board > div {
+  top:20px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.choco-board img {
+  border-radius: 5px;
+  height: 300px;
+  width: 300px;
+  transition:transform 0.5s ease;
+}
+
+.choco-board img:hover {
+  transform:scale(1.05);
+  opacity: 0.85;
+}
+
+.choco-board .choco-details {
+  margin-left: 50px;
+}
+
+.choco-board .choco-details ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.choco-board .choco-details .name {
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.choco-board .choco-details ul li {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.choco-board .choco-details ul li .title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.choco-board .btn {
+  vertical-align: text-bottom;
+  display: block;
+  background: #F6B352;
+  color: white;
+  font-weight: 500;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: rgba(0,0,0,0.9);
+  transition: all 200ms ease-in-out;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.choco-board .btn:hover {
+  background: #F68657;
+}
