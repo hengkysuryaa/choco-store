@@ -14,8 +14,13 @@ $registerUser->close();
 
 
 $loginCred = bin2hex(random_bytes(20));
-$registerCookie = $conn->prepare("INSERT INTO `cookies` VALUES (?, ?)");
-$registerCookie->bind_param("ss", $loginCred, $email);
+
+$tokenExpiryTime = new DateTime('now');
+$tokenExpiryTime->add(new DateInterval('PT30M'));
+$tokenExpiryTime = $tokenExpiryTime->format("Y-m-d H:i:s");
+$registerCookie = $conn->prepare("INSERT INTO `cookies` VALUES (?, ?, ?)");
+$registerCookie->bind_param("sss", $loginCred, $email, $tokenExpiryTime);
+
 $registerCookie->execute();
 setcookie('currentUsername', $loginCred, time() + (86400 * 30), '/');
 

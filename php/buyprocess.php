@@ -29,7 +29,7 @@
 
       $totalprice = $quantity * $price;
       // query insert data ke tabel transaksi TODO: sesuaiin dengan nama atribut tabel
-      $sql2 = "INSERT INTO transaksi(username,choco_name,amount,totalprice,`date`,`time`,address) VALUES ('$username','$choconame', $quantity, $totalprice, CURDATE() , CURTIME(), '$address');";
+      $sql2 = "INSERT INTO transaksi(username,choco_name,amount,totalprice,`date`,`time`,address,idcoklat) VALUES ('$username','$choconame', $quantity, $totalprice, CURDATE() , CURTIME(), '$address', $id);";
   
       if (mysqli_query($conn, $sql2)) {
           

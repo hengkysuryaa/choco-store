@@ -7,6 +7,12 @@
     return header('Location: login.php');
   }
 
+  $checkTokenExpiry = include('checkTokenExpiryTime.php');
+  $isTokenAvailable = $checkTokenExpiry($_COOKIE['currentUsername']);
+  if (!$isTokenAvailable) {
+    return header('Location: logout.php?s=0');
+  }
+
   if ($checkRole($_COOKIE['currentUsername']) == 'superuser') {
     header('Location: dashboard.php');
   }
@@ -66,7 +72,7 @@
           if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
               echo "<tr>";
-              echo "<td>".$row["choco_name"]."</td>";
+              echo "<td><a class='choco-detail-href' href='ChocoDetailUser.php?id=". $row["idcoklat"] ."'>".$row["choco_name"]."</a></td>";
               echo "<td>".$row["amount"]."</td>";
               echo "<td>".$row["totalprice"]."</td>";
               echo "<td>".$row["date"]."</td>";
