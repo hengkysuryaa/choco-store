@@ -11,18 +11,12 @@
     <a href="./php/lihattransaksi.php"> Lihat Transaksi </a><br>
     <a href="./pages/register.html"> Daftar </a><br>
     <a href="./pages/login.html"> Login </a><br>
+    <a href="./php/SearchPage.php"> Search Coklat </a>
 
-            <div class="choco-card-container">
+          <div class="choco-card-container">
           <?php
 
             include "php/connectDB.php";
-
-            //ambil semua database coklat yang ada
-            /*
-            $conn = mysqli_connect("localhost", "root", "aaaaaaab", "chocofactory");
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            } */
 
             $sql = "SELECT * FROM coklat";
             try {
