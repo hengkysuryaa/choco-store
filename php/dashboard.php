@@ -1,10 +1,17 @@
 <?php
   require_once 'connectDB.php';
 
-  $checkRole = include('checkRole.php');
   if (!isset($_COOKIE['currentUsername'])) {
     return header('Location: login.php');
   }
+
+  // $checkTokenExpiry = include('checkTokenExpiryTime.php');
+  // $isTokenAvailable = $checkTokenExpiry($_COOKIE['currentUsername']);
+  // if (!$isTokenAvailable) {
+  //   return header('Location: logout.php');
+  // }
+
+  $checkRole = include('checkRole.php');
   $getusername = include('getusername.php');
   $username = $getusername($_COOKIE["currentUsername"]);
   $role = $checkRole($_COOKIE['currentUsername']);

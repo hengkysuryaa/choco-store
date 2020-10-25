@@ -22,8 +22,13 @@ if (isset($result)) {
             setcookie('currentUsername', $loginCred, time() + (86400 * 30), '/');
         } else {
             $loginCred = bin2hex(random_bytes(20));
-            $registerCookie = $conn->prepare("INSERT INTO `cookies` VALUES (?, ?)");
-            $registerCookie->bind_param("ss", $loginCred, $email);
+
+            $currentTime = date("Y-m-d H:i:s");
+            $fiveMinutesAfterTime = $currentTime + (60 * 5);
+            $tokenExpiryTime =  date("Y-m-d H:i:s", $futureDate);
+            $registerCookie = $conn->prepare("INSERT INTO `cookies` VALUES (?, ?, ?)");
+            $registerCookie->bind_param("sss", $loginCred, $email, $tokenExpiryTime);
+            
             $registerCookie->execute();
             setcookie('currentUsername', $loginCred, time() + (86400 * 30), '/');
             $registerCookie->close();

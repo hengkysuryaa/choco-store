@@ -6,6 +6,12 @@
     return header('Location: login.php');
   }
 
+  $checkTokenExpiry = include('checkTokenExpiryTime.php');
+  $isTokenAvailable = $checkTokenExpiry($_COOKIE['currentUsername']);
+  if (!$isTokenAvailable) {
+    return header('Location: logout.php');
+  }
+
   if ($checkRole($_COOKIE['currentUsername']) == 'superuser') {
     header('Location: dashboard.php');
   }
