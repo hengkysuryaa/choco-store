@@ -1,11 +1,14 @@
 <?php
-
+  $checkRole = include('checkRole.php');
+  if (!isset($_COOKIE['currentUsername'])) {
+    return header('Location: login.php');
+  }
+  if ($checkRole($_COOKIE['currentUsername']) == 'user') {
+    header('Location: dashboard-user.php');
+  }
   $getusername = include('getusername.php');
   $username = $getusername($_COOKIE["currentUsername"]);
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
