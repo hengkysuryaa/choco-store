@@ -123,6 +123,18 @@ body {
 }
 
 :-ms-input-placeholder {
+<<<<<<< HEAD
   text-align: left !important;
   color: #d4d4d4 !important;
 }
+=======
+<<<<<<< HEAD
+  text-align: left;
+  color: #d4d4d4;
+}
+=======
+  text-align: left !important;
+  color: #d4d4d4 !important;
+}
+>>>>>>> 85f133b (Styling dashboard)
+>>>>>>> 7d3751e (Styling dashboard)
