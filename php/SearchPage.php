@@ -53,7 +53,11 @@
 
             $full_img_path = "../" . $row["imgpath"];
 
+            
+            echo "<a href='ChocoDetailUser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
             echo "<div class='choco-board'>";
+
+            // onclick="location.href='YOUR-URL-HERE';"
 
             echo "<div>";
             echo "<img src='". $full_img_path ."'>";
@@ -72,6 +76,10 @@
             echo "</div>";
 
             echo "</div>";
+
+            echo "</a>";
+
+            
         }
     ?>
 <br>

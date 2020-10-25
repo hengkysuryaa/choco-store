@@ -108,6 +108,12 @@ body {
   /*background-color: #cb997e;*/
   background: rgba(203, 153, 126, 0.5);
   padding: 20px;
+  transition:transform 0.5s ease-in-out;
+  /*width:80%;*/
+}
+
+.choco-board:hover {
+  background: rgba(203, 153, 126, 0.7);
 }
 
 .choco-board > div {
@@ -124,7 +130,7 @@ body {
 }
 
 .choco-board img:hover {
-  transform:scale(1.05);
+  transform:scale(1.01);
   opacity: 0.85;
 }
 
@@ -140,23 +146,24 @@ body {
 .choco-board .choco-details .name {
   font-size: 50px;
   font-weight: 500;
+  margin-bottom: 30px;
 }
 
 .choco-board .choco-details ul li {
   margin: 10px 0;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .choco-board .choco-details ul li .title {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
   margin-right: 10px;
 }
 
 .choco-board .btn {
   vertical-align: text-bottom;
   display: block;
-  background: #F6B352;
+  background: #8e6b58;
   color: white;
   font-weight: 500;
   padding: 15px 20px;
@@ -169,5 +176,5 @@ body {
 }
 
 .choco-board .btn:hover {
-  background: #F68657;
+  background: #cb997e;
 }
