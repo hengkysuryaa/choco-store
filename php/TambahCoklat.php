@@ -14,7 +14,7 @@
   }
 
   $file_extension = strtolower(pathinfo($target_path, PATHINFO_EXTENSION));
-  $allowable_extension = array("jpg", "png", "jpeg");
+  $allowable_extension = array("jpg", "png", "jpeg", "jfif");
   if (!in_array($file_extension, $allowable_extension)) {
     $ok = 0;
   }

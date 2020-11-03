@@ -12,6 +12,11 @@
   if (!$isTokenAvailable) {
     return header('Location: logout.php?s=0');
   }
+
+  $checkRole = include('checkRole.php');
+  $getusername = include('getusername.php');
+  $username = $getusername($_COOKIE["currentUsername"]);
+  $role = $checkRole($_COOKIE['currentUsername']);
 ?>
 
 <!DOCTYPE html>
@@ -26,18 +31,11 @@
     <div class="navbar">
         <ul>
             <li><a href="dashboard.php">Home</a></li>
-            <?php 
-                $check_role = include('checkRole.php');
-                $getUsername = include('getusername.php');
-                $current_role = $check_role($_COOKIE["currentUsername"]);
-                $username = $getUsername($_COOKIE['currentUsername']);
-
-                if (strcmp($current_role, 'superuser') == 0) {
-                    echo "<li><a href='tambah-coklat.php'>Add New Chocolate</a></li>";
-                } else if (strcmp($current_role, 'user') == 0) {
-                    echo "<li><a href='lihattransaksi.php?username=<?php echo $username ?>'>History</a></li>";
-                }
-            ?>
+            <?php if ($role == 'user'): ?>
+              <li><a href="lihattransaksi.php?username=<?php echo $username ?>">History</a></li>
+            <?php elseif ($role == 'superuser'): ?>
+              <li><a href="tambah-coklat.php">Add New Chocolate</a></li>
+            <?php endif; ?>
             <li class="logout-link"><a href="logout.php">Logout</a></li>
             <li class="search-bar">
               <form method="get" action="SearchPage.php">
@@ -85,9 +83,9 @@
             while ($row = mysqli_fetch_assoc($result2)) {
                 $full_img_path = "../" . $row["imgpath"];
 
-                if (strcmp($current_role, 'superuser') == 0) {
+                if (strcmp($role, 'superuser') == 0) {
                     echo "<a href='ChocoDetailSuperuser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
-                } else if (strcmp($current_role, 'user') == 0) {
+                } else if (strcmp($role, 'user') == 0) {
                     echo "<a href='ChocoDetailUser.php?id=" . $row["idcoklat"] . "' style='color:black; text-decoration:none;'>";
                 }
 

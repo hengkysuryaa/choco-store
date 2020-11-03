@@ -110,7 +110,7 @@ td {
   
 .active {
     color: #ffffff !important;
-    text-decoration: underline !important;
+    /*text-decoration: underline !important;*/
   }
   
 .logout-link {
