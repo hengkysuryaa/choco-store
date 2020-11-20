@@ -111,15 +111,17 @@
           function file_get_contents_curl($url) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Set curl to return the data instead of printing it to the browser.
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_URL, $url);
             $data = curl_exec($ch);
             curl_close($ch);
             return $data;
           }
 
+          $api = include('configAPI.php');
+
           ini_set("allow_url_fopen", 1);
-          $api_url = '192.168.0.103:3000/bahan';
+          $api_url = $api['URL'];
           $json_data = file_get_contents_curl($api_url);
           $response_data = json_decode($json_data);
           
@@ -133,10 +135,6 @@
         ?>
       </table>
     </div>
-<!--
-    <form action="../index.php" method="get">
-       <button type="submit">Back</button>
-    </form> -->
     <script src="../scripts/add-chocolate.js"></script>
   </body>
 
