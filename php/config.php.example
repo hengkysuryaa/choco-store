@@ -1,8 +1,20 @@
+//configDB.php
+
 <?php
 return array(
     'DB_HOSTNAME' => 'localhost',
     'DB_USERNAME' => 'lalala',
     'DB_PASSWORD' => '123123',
     'DB_DATABASE_NAME' => 'chocofactory',
+);
+?>
+
+---------------------------------------------
+
+//configAPI.php
+
+<?php
+return array(
+    'API_URL' => 'localhost:3000/supply',
 );
 ?>
