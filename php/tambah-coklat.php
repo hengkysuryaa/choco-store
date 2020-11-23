@@ -44,67 +44,64 @@
     </div>
 
     <div class="flex-container">
-      <table border="0" style="width: 100%;">
-        <form enctype="multipart/form-data" action="TambahCoklat.php" method="POST">
+      <form enctype="multipart/form-data" action="TambahCoklat.php" method="POST">
+        <table border="1" style="width:100%;">
           <tr>
             <td> Name: </td>
             <td> <input type="text" name="name" size="50" autocomplete="off"> </td>
-            <td> </td>
-            <td> </td>
           </tr>
           <tr> 
             <td> Price: </td>
             <td> <input type="text" name="price" size="50" autocomplete="off"> </td>
-            <td> </td>
-            <td> </td>
           </tr>
           <tr>
             <td> Description:  </td>
-            <td> <textarea style="resize:none;" rows="5" cols="52" name="desc" autocomplete="off" required></textarea> </td>
-            <td> </td>
-            <td> </td>
+            <td> <textarea style="resize:none;" rows="5" cols="51" name="desc" autocomplete="off" required></textarea> </td>
           </tr>
           <tr>
             <td> Upload Image (max 2MB): </td>
             <td> <input type="file" name="pic" id="pic"> </td>
-            <td> </td>
-            <td> </td>
           </tr>
           <tr>
             <td> Amount: </td>
             <td> <input type="text" name="count" autocomplete="off" size="50"> </td>
-            <td> </td>
-            <td> </td>
           </tr>
           <tr>
             <td> Bahan: </td>
             <td id="bahan-list"> 
               <div class="bahan-field" id="bahan1">
-                <div><input type="text" name="count" autocomplete="off" size="50"> </div>
-                <div class="btn-add" onClick="addBahanField()"> <b> Add </b> </div> 
+                <div><input id="namabahan1" type="text" name="bahan[]" autocomplete="off" size="50"> </div>
+                <div id="add1" class="btn-add" onClick="addBahanField()"> <b> Add </b> </div> 
                 <div class="btn-cancel" onClick="removeBahanField('bahan1')"> <b> Remove </b> </div>
                 <div> Jumlah Satuan: </div>
                 <div> <input class="plus-minus-button" type="button" onclick="minusButton('quantity1')" value="-"> </div>
-                <div> <input type="number" id="quantity1" name="quantity1" value="1" style="text-align: center;" readonly required> </div>
+                <div> <input type="number" id="quantity1" name="quantity[]" value="0" style="text-align: center;" readonly required> </div>
                 <div> <input class="plus-minus-button" type="button" onclick="plusButton('quantity1')" value="+"> </div>
               </div>
             </td>
-            <td></td>
-            <td></td>
           </tr>
           <tr> 
-            <td colspan="4"> 
+            <td colspan="2"> 
               <button class="btn-add btn-nav" type="submit"> <b> Add Chocolate </b> </button> 
               <button class="btn-cancel btn-nav" onclick="location.href = 'dashboard.php'"> <b> Cancel </b> </button>
             </td>
           </tr>
-        </form>
-      </table>
+        </table>
+      </form>
+    </div>
+
+    <div class="flex-container">
+      <h3> Perkiraan Harga </h3>
+      <input id="perkiraanharga" value="Rp 0" style="text-align: center; margin-left: 20px" readonly required>
+    </div>
+
+    <div class="flex-container">
+      <h3> Daftar Supply </h3>
     </div>
 
     <div class="flex-container">
 
-      <table border="1" style="width:100%; text-align:left"> 
+      <table id="supplies" border="1" style="width:100%; text-align:left"> 
         <tr>
           <td> <b> Supply Name </b> </td>
           <td> <b> Supply Price </b> </td>
@@ -128,8 +125,6 @@
           $api_url = $api['API_URL'] . "?harga=1";
           $json_data = file_get_contents_curl($api_url);
           $response_data = json_decode($json_data);
-
-          
           
           for ($x = 0; $x < count($response_data); $x++) {
             echo "<tr>";
