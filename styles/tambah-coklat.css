@@ -142,3 +142,22 @@ td {
   display: inline;
 }
 
+.plus-minus-button {
+  height: 0.7cm; 
+  width: 0.7cm; 
+  border-radius: 30%; 
+  background-color: brown; 
+  color: antiquewhite;
+}
+
+/* 
+.bahan-field input {
+  margin-right: 20px;
+  display: inline;
+}
+
+.bahan-field p {
+  margin-right: 20px;
+  display: inline;
+} */
+

@@ -80,9 +80,13 @@
             <td> Bahan: </td>
             <td id="bahan-list"> 
               <div class="bahan-field" id="bahan1">
-                <input type="text" name="count" autocomplete="off" size="50"> 
+                <div><input type="text" name="count" autocomplete="off" size="50"> </div>
                 <div class="btn-add" onClick="addBahanField()"> <b> Add </b> </div> 
                 <div class="btn-cancel" onClick="removeBahanField('bahan1')"> <b> Remove </b> </div>
+                <div> Jumlah Satuan: </div>
+                <div> <input class="plus-minus-button" type="button" onclick="minusButton('quantity1')" value="-"> </div>
+                <div> <input type="number" id="quantity1" name="quantity1" value="1" style="text-align: center;" readonly required> </div>
+                <div> <input class="plus-minus-button" type="button" onclick="plusButton('quantity1')" value="+"> </div>
               </div>
             </td>
             <td></td>
