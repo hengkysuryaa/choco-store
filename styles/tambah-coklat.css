@@ -17,6 +17,7 @@ td {
     margin-bottom: 20px;
     margin-top: 20px;
     padding-top: 20px;
+    padding-bottom: 20px;
     padding-left: 20px;
     border-radius: 20px;
 }
@@ -142,3 +143,14 @@ td {
   display: inline;
 }
 
+.plus-minus-button {
+  height: 0.7cm; 
+  width: 0.7cm; 
+  border-radius: 30%; 
+  background-color: brown; 
+  color: antiquewhite;
+}
+
+#perkiraanharga {
+  font-size: 25px;
+}

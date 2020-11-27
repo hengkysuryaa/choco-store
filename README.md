@@ -51,7 +51,6 @@ Pada laman ini terdapat menu untuk menambahkan coklat baru, dengan mengisi data-
 
 Sebagai tambahan, aplikasi ini juga mengimplementasikan token pada cookie yang bisa expired (waktunya terbatas).
 
-
 ## Daftar requirement
 
 - PHP 7.4
