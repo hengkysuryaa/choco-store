@@ -1,3 +1,4 @@
 php/config.php
 php/configDB.php
+php/configAPI.php
 php/test.php

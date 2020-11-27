@@ -32,8 +32,8 @@
     foreach ($_POST["quantity"] as $key => $val) {
 
       $resep_bahan_baru = array();
-      $resep_bahan_baru[] = new SoapVar($_POST["quantity"][$key], XSD_DECIMAL, null, null, 'jumlah');
-      $resep_bahan_baru[] = new SoapVar($_POST["bahan"][$key], XSD_STRING, null, null, 'nama');
+      $resep_bahan_baru[] = new SoapVar($_POST["quantity"][$key], XSD_DECIMAL, null, null, 'jumlahBahan');
+      $resep_bahan_baru[] = new SoapVar($_POST["bahan"][$key], XSD_STRING, null, null, 'namaBahan');
 
       $resep_bahan_baru = new SoapVar($resep_bahan_baru, SOAP_ENC_OBJECT, null, null, 'arg1');
       $return_array[] = $resep_bahan_baru;
