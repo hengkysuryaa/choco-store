@@ -122,16 +122,27 @@
           $api = include('configAPI.php');
 
           ini_set("allow_url_fopen", 1);
-          $api_url = $api['API_URL'] . "?harga=1";
-          $json_data = file_get_contents_curl($api_url);
-          $response_data = json_decode($json_data);
-          
-          for ($x = 0; $x < count($response_data); $x++) {
-            echo "<tr>";
-            echo "<td>".$response_data[$x]->nama_bahan."</td>";
-            echo "<td>".$response_data[$x]->harga_satuan."</td>";
-            echo "</tr>";
+          $api_url = $api['SUPPLY_API_URL'];
+
+          try {
+            // run your code here
+            $json_data = file_get_contents_curl($api_url);
+            $response_data = json_decode($json_data);
+
+            for ($x = 0; $x < count($response_data); $x++) {
+              echo "<tr>";
+              echo "<td>".$response_data[$x]->nama_bahan."</td>";
+              echo "<td>".$response_data[$x]->harga_satuan."</td>";
+              echo "</tr>";
+            }
+          } catch (exception $e) {
+              //code to handle the exception
+              echo $e;
           }
+          echo "test";
+          echo $api_url;
+          echo "<br>";
+
 
         ?>
       </table>
