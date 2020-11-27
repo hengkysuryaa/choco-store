@@ -139,11 +139,6 @@
               //code to handle the exception
               echo $e;
           }
-          echo "test";
-          echo $api_url;
-          echo "<br>";
-
-
         ?>
       </table>
     </div>

@@ -42,7 +42,7 @@
   }
 
   $api = include('configAPI.php');
-  $factory_url = $api['FACTORY_COKLAT_URL']
+  $factory_url = $api['FACTORY_COKLAT_URL'];
 
   $data = createAddCoklatSOAPData();
   $client = new SoapClient($factory_url);
