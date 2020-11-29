@@ -51,6 +51,19 @@ Pada laman ini terdapat menu untuk menambahkan coklat baru, dengan mengisi data-
 
 Sebagai tambahan, aplikasi ini juga mengimplementasikan token pada cookie yang bisa expired (waktunya terbatas).
 
+### Deskripsi Basis Data dan Perubahan Pada Tugas Besar 2
+
+Basis Data dari Willy Wangky Web adalah sebagai berikut:
+
+| Nama Tabel  | Atribut |
+| ------------- | ------------- |
+| coklat  | (idcoklat, choco_name, price, imgpath, amount, amountsold, description)  |
+| cookies  | (cookie_auth, username)  |
+| transaksi  | (idtransaksi, choco_name, amount, totalprice, date, time, address, username)  |
+| users  | (username, email, password, role)  |
+
+Dengan tambahan sebuah tabel baru yaitu `pending_requests` untuk menyimpan daftar request penambahan stok coklat.
+
 ## Daftar requirement
 
 - PHP 7.4
@@ -267,6 +280,10 @@ $ mysql -u 'YOUR_SYSTEM_USER' -p chocofactory < path_to_folder_ini/db/final_db.s
 
 ![](assets/screenshot/add-choco.jpg)
 
+#### Perubahan Pada Tugas Besar 2
+
+![](assets/screenshot/add-choco-tubes-2.jpg)
+
 ## Pembagian Tugas
 
 Berikut pembagian tugas tiap anggota kelompok
@@ -291,8 +308,16 @@ Berikut pembagian tugas tiap anggota kelompok
 6. Transaction History : 13518017
 7. Add New Chocolate : 13518017
 
+### Perubahan Willy Wangky's Web (Tugas Besar 2)
+
+1. Pengiriman Request Saat Melakukan Add Stock Coklat (Add Stock) : 13518048
+2. Pengecekan Status Request ke Web Service : 13518041
+3. Pembuatan Coklat Baru (Penambahan Data Material Coklat berdasarkan Data dari Supplier, Menampilkan Harga Total Material) / Add New Chocolate : 13518017
+4. Pengiriman Resep Coklat ke Web Service Factory (Add New Chocolate) : 13518017
+5. Pemanggilan Request ke Web Service Factory untuk mengubah Saldo saat penjualan (Saldo) : 13518048
+
 ## About
 
-Kelompok 9 Tugas Besar 1 IF3110 Pengembangan Aplikasi Berbasis Web
+Kelompok 4 Tugas Besar 2 IF3110 Pengembangan Aplikasi Berbasis Web
 
 Farras | Samuel | Hengky
