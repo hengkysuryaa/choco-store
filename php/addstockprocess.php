@@ -1,7 +1,9 @@
 <?php 
-
+  require_once 'connectDB.php';
   //print_r(phpinfo());
   use SoapClient;
+  $configAPI = include('configAPI.php');
+  $requestAPI = $configAPI['FACTORY_REQUEST_URL'];
 
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
@@ -11,6 +13,7 @@
   // data from post
   $amount_add = $_POST["quantity"];
   $id = $_GET["id"];
+  $idrequest = null;
 
   function createAddStockSOAPData() {
     $return_array = array();
@@ -20,15 +23,14 @@
     $id_coklat = new SoapVar($id, XSD_DECIMAL, null, null, 'arg0');
     $return_array[] = $id_coklat;
 
-    $amount_add = new SoapVar($amount_add, XSD_DECIMAL, null, null, 'arg1');
-    $return_array[] = $amount_add;
+    $amount_to_add = new SoapVar($amount_add, XSD_DECIMAL, null, null, 'arg1');
+    $return_array[] = $amount_to_add;
     
     return $return_array;
   }
 
-  $factory_url = "http://localhost:8080/ws-factory/request?wsdl";
   $data = createAddStockSOAPData();
-  $client = new SoapClient($factory_url);
+  $client = new SoapClient($requestAPI);
   // for debugging
   $functions = $client->__getFunctions();
   $types = $client->__getTypes();
@@ -45,6 +47,15 @@
     // send request to web service
   try{
     $result = $client->addNewRequest(new SoapVar($data, SOAP_ENC_OBJECT));
+
+    $addPendingRq = $conn->prepare("INSERT INTO `pending_requests` VALUES (?, ?, ?)");
+    $addPendingRq->bind_param("iii", $idrequest, $id, $amount_add);
+    echo $idrequest;
+    echo $id_coklat;
+    echo $amount_add;
+    $addPendingRq->execute();
+    $addPendingRq->close();
+
     print_r($result);
     echo "<script>window.location='ChocoAddStockDetail.php?id=" . $id . "';alert('Permintaan telah dikirim ke Factory');</script>";
   } catch(SoapFault $ex){
