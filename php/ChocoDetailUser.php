@@ -21,10 +21,19 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title> Detail page </title>
         <link rel="stylesheet" href="../styles/choco-detail.css">
+        <script type="text/javascript">
+          function checkOrderStatus() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '../php/checkPendingRequests.php', true);
+            xhr.send();
+          }
+
+          setInterval('checkOrderStatus()', 1000);
+        </script>
     </head>
     <body>
         <div class="navbar">

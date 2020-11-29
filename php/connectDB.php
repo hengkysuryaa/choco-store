@@ -8,6 +8,6 @@ $db_database_name = $config['DB_DATABASE_NAME'];
 $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database_name);
 
 if ($conn->connect_errno) {
-    echo ('Unable to connect' . $conn->connect_error);
+    echo 'Unable to connect' . $conn->connect_error;
     exit();
 }
