@@ -24,6 +24,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../styles/dashboard.css">
+    <script type="text/javascript">
+      function checkOrderStatus() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '../php/checkPendingRequests.php', true);
+        xhr.send();
+      }
+
+      setInterval('checkOrderStatus()', 1000);
+    </script>
 </head>
 <body>
   <div class="navbar">
