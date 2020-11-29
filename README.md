@@ -1,6 +1,6 @@
-# Tugas 1 IF3110 Pengembangan Aplikasi Berbasis Web
+# Tugas 2 IF3110 Pengembangan Aplikasi Berbasis Web
 
-## Deskripsi aplikasi web
+## Deskripsi aplikasi web (Willy Wangky Factory)
 
 Aplikasi Penjualan Coklat ini merupakan aplikasi berbasis web yang ditulis dalam rangka memenuhi pengerjaan 
 tugas besar 1 Mata Kuliah IF3110 Pemgembangan Aplikasi Berbasis Web. Aplikasi ini merupakan sebuah platform 
